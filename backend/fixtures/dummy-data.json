@@ -1,0 +1,194 @@
+[
+  {
+    "model": "users.user",
+    "pk": 1,
+    "fields": {
+      "email": "jossie@gmail.com",
+      "password": "pbkdf2_sha256$260000$wIoQIdeh24SdyxhMsbRW7K$2RZvx7cM4EBT4xGwuFAjGyb3GmwjTYUczEsOFaoJICo=",
+      "token": "3685631632dd1dd700d4e2697d772227410f7a9ffb64d174ebc0280ed9a9",
+      "token_expires": "2022-10-15 10:19:26.493359",
+      "created_at": "2021-09-10T02:41:56.809Z",
+      "updated_at": "2021-09-10T03:22:01.153Z"
+    }
+  },
+  {
+    "model": "users.user",
+    "pk": 2,
+    "fields": {
+      "password": "pbkdf2_sha256$260000$jy67kuYYjWosb1d2dkznDO$xe7jv0PgSvqbBNZOjjhW91RyN/VIaYLrCkpvmhTRFcU=",
+      "email": "rachel@gmail.com",
+      "token": "6ec112cf144534d6bb7232f58673649fce450d148835781ee6bc66f378f9",
+      "token_expires": "2022-10-15 10:21:03.953405",
+      "created_at": "2021-09-10T02:42:37.376Z",
+      "updated_at": "2021-09-10T03:14:16.666Z"
+    }
+  },
+  {
+    "model": "transactions.transaction",
+    "pk": 1,
+    "fields": {
+      "name": "salary",
+      "amount": "900",
+      "type": "income",
+      "user_id": "1",
+      "created_at": "2021-09-05T02:43:25.618Z",
+      "updated_at": "2021-09-05T03:13:33.553Z"
+    }
+  },
+  {
+    "model": "transactions.transaction",
+    "pk": 2,
+    "fields": {
+      "name": "new iphone",
+      "amount": "1200",
+      "type": "expense",
+      "user_id": "1",
+      "created_at": "2021-09-10T02:43:25.618Z",
+      "updated_at": "2021-09-10T03:13:33.553Z"
+    }
+  },
+  {
+    "model": "transactions.transaction",
+    "pk": 3,
+    "fields": {
+      "name": "new motocyle",
+      "amount": "5000",
+      "type": "expense",
+      "user_id": "1",
+      "created_at": "2021-10-10T02:43:25.618Z",
+      "updated_at": "2021-10-10T03:13:33.553Z"
+    }
+  },
+  {
+    "model": "transactions.transaction",
+    "pk": 4,
+    "fields": {
+      "name": "Salary",
+      "amount": "900",
+      "type": "income",
+      "user_id": "1",
+      "created_at": "2021-10-10T02:43:25.618Z",
+      "updated_at": "2021-10-10T03:13:33.553Z"
+    }
+  },
+  {
+    "model": "transactions.transaction",
+    "pk": 5,
+    "fields": {
+      "name": "laptop",
+      "amount": "500",
+      "type": "expense",
+      "user_id": "1",
+      "created_at": "2021-08-10T02:43:25.618Z",
+      "updated_at": "2021-11-10T03:13:33.553Z"
+    }
+  },
+  {
+    "model": "transactions.transaction",
+    "pk": 6,
+    "fields": {
+      "name": "Salary",
+      "amount": "900",
+      "type": "income",
+      "user_id": "1",
+      "created_at": "2021-08-10T02:43:25.618Z",
+      "updated_at": "2021-08-10T03:13:33.553Z"
+    }
+  },
+  {
+    "model": "transactions.transaction",
+    "pk": 7,
+    "fields": {
+      "name": "sell phone",
+      "amount": "500",
+      "type": "income",
+      "user_id": "1",
+      "created_at": "2021-08-10T02:43:25.618Z",
+      "updated_at": "2021-08-10T03:13:33.553Z"
+    }
+  },
+  {
+    "model": "transactions.transaction",
+    "pk": 8,
+    "fields": {
+      "name": "new shoes",
+      "amount": "25",
+      "type": "expense",
+      "user_id": "1",
+      "created_at": "2021-08-10T02:43:25.618Z",
+      "updated_at": "2021-08-10T03:13:33.553Z"
+    }
+  },
+  {
+    "model": "transactions.transaction",
+    "pk": 9,
+    "fields": {
+      "name": "bag",
+      "amount": "65",
+      "type": "expense",
+      "user_id": "1",
+      "created_at": "2021-08-10T02:43:25.618Z",
+      "updated_at": "2021-08-10T03:13:33.553Z"
+    }
+  },
+  {
+    "model": "transactions.transaction",
+    "pk": 10,
+    "fields": {
+      "name": "table",
+      "amount": "80",
+      "type": "expense",
+      "user_id": "1",
+      "created_at": "2021-08-10T02:43:25.618Z",
+      "updated_at": "2021-08-10T03:13:33.553Z"
+    }
+  },
+  {
+    "model": "transactions.transaction",
+    "pk": 11,
+    "fields": {
+      "name": "Sell TV",
+      "amount": "150",
+      "type": "income",
+      "user_id": "1",
+      "created_at": "2021-08-10T02:43:25.618Z",
+      "updated_at": "2021-08-10T03:13:33.553Z"
+    }
+  },
+  {
+    "model": "transactions.transaction",
+    "pk": 12,
+    "fields": {
+      "name": "Sell Laptop",
+      "amount": "450",
+      "type": "income",
+      "user_id": "1",
+      "created_at": "2021-08-10T02:43:25.618Z",
+      "updated_at": "2021-08-10T03:13:33.553Z"
+    }
+  },
+  {
+    "model": "transactions.transaction",
+    "pk": 13,
+    "fields": {
+      "name": "Cofe machine",
+      "amount": "120",
+      "type": "expense",
+      "user_id": "1",
+      "created_at": "2021-08-10T02:43:25.618Z",
+      "updated_at": "2021-08-10T03:13:33.553Z"
+    }
+  },
+  {
+    "model": "transactions.transaction",
+    "pk": 14,
+    "fields": {
+      "name": "Salary",
+      "amount": "900",
+      "type": "income",
+      "user_id": "2",
+      "created_at": "2021-08-10T02:43:25.618Z",
+      "updated_at": "2021-08-10T03:13:33.553Z"
+    }
+  }
+]

@@ -1,0 +1,111 @@
+.landing-page {
+    display: flex;
+    flex-direction: column;
+    flex: 1;
+    background: linear-gradient(rgba(0, 0, 0, .5), rgba(0, 0, 0, .5)), url('../images/background-landing.png');
+    padding: 4rem;
+    box-sizing: border-box;
+}
+
+.landing-page .big-text {
+    font-size: 72px;
+    font-weight: bold;
+}
+
+.landing-page .small-text {
+    font-size: 28px;
+}
+
+.landing-page form {
+    color: #fff;
+    display: flex;
+    flex-direction: column;
+    max-width: 320px;
+}
+
+.landing-page form label {
+    margin: .5rem;
+}
+
+.landing-page form input {
+    background-color: rgba(194, 215, 226, .45);
+    border-radius: .5rem;
+    border: none;
+    outline: none;
+    height: 3rem;
+    padding: 0 1rem;
+    color: #f8f5f5;
+}
+
+.landing-page form button {
+    height: 40px;
+    border-radius: 12px;
+    border: 1px solid #707070;
+    font-size: 14px;
+    font-weight: bold;
+    margin: auto auto auto 0;
+    color: #003664;
+    background-color: #FFFFFF;
+    transition: .2s ease-out;
+    cursor: pointer;
+    padding: 0 30px;
+}
+.landing-page form button:hover{
+    color: #FFFFFF;
+    background-color: #003664;
+}
+
+.landing-page form input::placeholder {
+    color: #f8f5f5;
+    opacity: 1;
+}
+
+.input-group {
+    border-radius: .5rem;
+    width: 100%;
+}
+
+.input-group input {
+    width: 100%;
+    border-radius: 0 !important;
+    border-bottom: 1px solid #fff !important;
+}
+
+.input-group input:first-child {
+    border-top-left-radius: .5rem !important;
+    border-top-right-radius: .5rem !important;
+}
+
+.input-group input:last-child {
+    border-bottom-left-radius: .5rem !important;
+    border-bottom-right-radius: .5rem !important;
+    border-bottom: none !important;
+}
+
+@media only screen and (max-width: 768px ) {
+    .landing-page .big-text {
+        font-size: 60px;
+    }
+    
+    .landing-page .small-text {
+        font-size: 24px;
+    }
+}
+
+@media only screen and (max-width: 425px) {
+    .landing-page {
+        padding: 1rem;
+    }
+
+    .landing-page form {
+        max-width: 80%;
+    }
+
+    .landing-page .big-text {
+        font-size: 32px;
+    }
+    
+    .landing-page .small-text {
+        font-size: 12px;
+    }
+}

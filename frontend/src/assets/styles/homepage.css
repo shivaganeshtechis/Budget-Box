@@ -1,0 +1,882 @@
+/*****************************
+* Table
+******************************/
+
+.container--report table {
+    border-collapse: separate;
+    border-spacing: 0pt;
+    border: 1px solid #003664;
+    border-radius: 12px;
+}
+
+.container--report thead tr th:not(:last-child) {
+    border-right: 1px solid #003664 
+}
+
+.container--report tbody tr td:not(:last-child) {
+    border-right: 1px solid #003664 
+}
+
+.container--report th {
+    padding: 24px 32px 8px 32px;
+    color: #003664;
+    width: 170px;
+    font-size: 18px;
+}
+
+.container--report th:after {
+    content: "";
+    display: block;
+    border-bottom: 1px solid #003664;
+    padding-bottom: 24px;
+}
+
+.container--report td {
+    padding: 17px 32px;
+    text-align: center;
+    color: #003664;
+}
+
+.table-container tbody tr:hover{
+    background-color: #00356427;
+    cursor: pointer;
+}
+
+/*****************************
+* Homepage
+******************************/
+
+.homepage {
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	height: 100%;
+    margin-top: 3rem;
+}
+
+.container--report .expense-amount {
+    letter-spacing: 1px;
+    color: #FF0000;
+    font-weight: bold;
+}
+
+.container--report .expense-amount span {
+    font-size: 16px;
+}
+
+.container--report .income-amount {
+    letter-spacing: 1px;
+    color: #2AC904;
+    font-weight: bold;
+}
+
+.table-container {
+    background-color: #BBDCEB;
+    margin-bottom: 16px;
+    padding: 20px;
+}
+
+.no-transaction-container {
+    width: 790px;
+}
+
+.pagination {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+}
+
+.pagination a {
+    text-decoration: none;
+    color: #003664;
+    margin-right: 24px;
+}
+
+.pagination a p {
+    width: 15px;
+}
+
+.pagination .active {
+    font-weight: 800;
+}
+
+.container {
+    max-width: 790px;
+    min-height: 16em;
+}
+
+.tab2 {
+    position: absolute;
+    left: 100px;
+}
+
+.container--tabs {
+    list-style: none;
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-start;
+    align-items: center;
+    position: relative;
+    margin: 0;
+    padding: 0;
+    width: 120px;
+    height: 38px;
+}
+
+.container--tabs .tab {
+    min-height: 2em;
+    padding: 8px 10px;
+    box-sizing: border-box;
+    width: 100%;
+    text-align: center;
+    cursor: pointer;
+    background-color: #59AAD0;
+    color: #000000;
+    transition: background-color 0.25s;
+    border-top-left-radius: 12px;
+    border-top-right-radius: 12px;
+    font-weight: 600;
+    font-size: 19px;
+}
+
+.container--tabs .tabs--active {
+    background-color: #BBDCEB;
+    color: #000000;
+    z-index: 99;
+    height: 40px;
+    box-shadow: 10px -8px 20px -13px #25729b
+}
+
+.content {
+    display: none;
+    text-align: center;
+}
+
+.content--active {
+    display: block;
+}
+
+.add-budget {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-around;
+    width: 120px;
+    height: 40px;
+    border: 3px solid #003664;
+    border-radius: 12px;
+    cursor: pointer;
+    margin: 0 18px 10px 0;
+    box-shadow: 10px 5px 20px -12px #25729b
+}
+
+.add-budget img {
+    width: 20%;
+    font-weight: bold;
+}
+
+.add-budget p {
+    color: #003664;
+    font-size: 18px;
+    font-weight: 700;
+}
+
+.container-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-end;
+}
+
+.custom-modal {
+	width: 100vw;
+	height: 100vh;
+    background-color: #ffffff8c;
+	position: fixed;
+	z-index: 9990;
+	top: 0;
+	left: 0;
+}
+
+.custom-modal--bg {
+	width: inherit;
+	height: inherit;
+	background: rgba(0, 0, 0, 0.5);
+	position: absolute;
+	z-index: 9991;
+}
+
+.custom-modal--container {
+	width: 100%;
+	max-width: 450px;
+	max-height: 100%;
+	position: absolute;
+	z-index: 9993;
+	top: 50%;
+	left: 50%;
+	transform: translate(-50%, -50%);
+}
+
+.custom-modal--content {
+	background: #64C2EE;
+	width: 100%;
+	padding: 10px 20px;
+	position: relative;
+	z-index: 9993;
+	animation: customModalAnimate 0.4s;
+	transition: all 0.1s ease-in;
+    border-radius: 12px;
+    box-shadow: 10px 10px 20px -10px #25729b
+}
+
+.custom-modal--content .modal-content {
+	width: 100%;
+	min-height: 120px;
+	display: flex;
+	justify-content: space-around;
+}
+
+.custom-modal-transaction--content {
+	background: #64C2EE;
+	width: 100%;
+	padding: 20px 20px;
+	position: relative;
+	z-index: 9993;
+	animation: customModalAnimate 0.4s;
+	transition: all 0.1s ease-in;
+    border-radius: 12px;
+    box-shadow: 10px 10px 20px -10px #25729b
+}
+
+.custom-modal-transaction--container {
+	width: 100%;
+	max-width: 310px;
+    text-align: center;
+    max-height: 100%;
+	position: absolute;
+	z-index: 9993;
+	top: 50%;
+	left: 50%;
+	transform: translate(-50%, -50%);
+}
+
+.custom-modal-transaction--content .modal-transaction-content {
+    width: 100%;
+    min-height: 120px;
+    display: flex;
+    justify-content: space-around;
+    flex-direction: column;
+    align-items: center;
+}
+
+.custom-modal .modal-close {
+	color: white;
+	position: absolute;
+	z-index: 9994;
+	bottom: 0;
+	right: 0;
+	transform: translate(0, 110%);
+	font-style: normal;
+	font-size: 24px;
+	font-family: Arial, Baskerville, monospace;
+	line-height: 24px;
+	cursor: pointer;
+}
+
+.custom-modal--cancel {
+    position: absolute;
+    display: flex;
+    top: -60px;
+    right: -45px;
+    width: 40px;
+    height: 40px;
+    background: #64c2eeba;
+    border-radius: 50%;
+    box-shadow: 5px 5px 10px -7px #25729b;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+}
+
+.custom-modal--cancel img {
+    width: 50%;
+}
+
+.custom-modal--header {
+	width: 100%;
+	padding: 0 0 16px 0;
+	position: relative;
+	font-size: 20px;
+	z-index: 9993;
+	animation: customModalAnimate 0.4s;
+	transition: all 0.1s ease-in;
+}
+
+.custom-modal.modal-hide {
+	display: none !important;
+}
+
+.custom-input-modal {
+	height: 40px;
+    border: 1px solid #fff;
+    padding: 5px 10px 5px 16px;
+    font-size: 14px;
+}
+
+.budget-form {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: flex-start;
+    padding: 40px 20px;
+}
+
+.budget-input {
+    display: flex;
+    flex-direction: column;
+    padding-left: 24px;
+}
+
+.budget-dropdown {
+    padding: 10px 4px;
+    font-size: 16px;
+}
+
+.budget-input .custom-btn {
+    margin: 12px auto 12px auto;
+    height: 34px;
+}
+
+
+
+/*****************************
+* Chart
+******************************/
+.container--chart {
+    position: relative;
+    background-color: #BBDCEB;
+    padding: 20px;
+}
+
+.inner-container--chart{
+    padding: 0 0 0 82px;
+    border-radius: 12px;
+    border: 1px solid #003664;
+    color: #003664;
+    width: 750px;
+}
+
+.chart-title {
+    font-size: 24px;
+    font-weight: 500;
+    color: #003664;
+}
+
+.container--chart .table-container {
+    padding: 50px;
+}
+
+.label-bar {
+    position: absolute;
+    top: 115px;
+    z-index: 3;
+}
+
+.label-bar.expense-amount {
+    right: 40%;
+}
+
+.label-bar.income-amount {
+    right: 20%;
+}
+
+.label-bar.income-amount::before {
+    background-color: #2AC904;
+}
+
+.label-bar.expense-amount::before {
+    background-color: #FF0000;
+}
+
+.label-bar::before {
+    content: "";
+    height: 15px;
+    width: 30px;
+    display: block;
+    position: absolute;
+    left: -40px;
+    border-radius: 3px;
+}
+
+.currency-label {
+    position: absolute;
+    z-index: 1;
+    left: 70px;
+    top: 60px;
+}
+
+#q-graph {
+    display: block;
+    background-color: #FFFFFF;
+    position: relative;
+    width: 85%;
+    height: 400px;
+    padding: 0;
+    font-size: 11px;
+    border-radius: 12px;
+}
+
+#q-graph caption {
+    caption-side: top;
+    width: 600px;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    top: -40px;
+    position: relative;
+    z-index: 10;
+    font-weight: bold;
+}
+
+#q-graph tr, #q-graph th, #q-graph td {
+    position: absolute;
+    bottom: 0;
+    width: 50px;
+    z-index: 2;
+    margin: 0;
+    padding: 0;
+    text-align: center;
+}
+#q-graph td {
+    transition: all 0.3s ease;
+}
+
+#q-graph .expense-bar:hover {
+    background-color: #970000;
+}
+
+#q-graph .income-bar:hover {
+    background-color: #1a8100;
+}
+
+#q-graph thead tr {
+    left: 60%;
+    top: 10%;
+    bottom: auto;
+}
+
+#q-graph thead th {
+    width: 7.5em;
+    height: auto;
+    padding: 0.5em 1em;
+}
+
+#q-graph thead th.expense-bar {
+    top: 0;
+    left: 0;
+    line-height: 2;
+}
+
+#q-graph thead th.income-bar {
+    top: 2.75em;
+    line-height: 2;
+    left: 0;
+}
+
+#q-graph tbody tr {
+    height: 296px;
+    padding-top: 2px;
+    color: #aaa;
+}
+
+#q-graph #q1 {
+    left: 75px;
+}
+
+#q-graph #q2 {
+    left: 250px;
+}
+
+#q-graph #q3 {
+    left: 425px;
+}
+
+#q-graph #q4 {
+    left: 555px;
+    top: 110px;
+    border-right: none;
+}
+
+#q-graph tbody th {
+    bottom: -1.75em;
+    vertical-align: top;
+    font-weight: normal;
+    width: 90px;
+    font-size: 14px;
+    color: #003664;
+}
+
+#q-graph .bar {
+    width: 30px;
+    border-top-left-radius: 2px;
+    border-top-right-radius: 2px;
+    border-bottom: none;
+    color: #000;
+}
+
+#q-graph .bar p {
+    margin: 5px 0 0;
+    padding: 0;
+    opacity: 0.4;
+}
+
+#q-graph .expense-bar {
+    left: 13px;
+    background-color: #ff0000;
+}
+
+#q-graph .income-bar {
+    left: 50px;
+    background-color: #2AC904;
+}
+
+#ticks {
+    position: relative;
+    top: -335px;
+    left: 2px;
+    z-index: 1;
+    margin-bottom: -300px;
+    font-size: 10px;
+}
+
+#ticks .tick {
+    position: relative;
+    height: 55px;
+    font-size: 14px;
+}
+
+#ticks .tick p {
+    position: absolute;
+    left: -5em;
+    top: -0.8em;
+    margin: 0 0 0 0.5em;
+}
+
+.qtr-label{
+    margin-left: 20px;
+}
+
+/*****************************
+* Responsive
+******************************/
+@media only screen and (max-width: 800px) {
+    .container{
+        max-width: 730px;
+    }
+
+    .inner-container--chart {
+        width: 689px;
+    }
+
+    #q-graph #q1 {
+        left: 50px;
+    }
+
+    #q-graph #q2 {
+        left: 200px;
+    }
+
+    #q-graph #q3 {
+        left: 350px;
+    }
+
+    #q-graph #q4 {
+        left: 500px;
+    }
+}
+
+@media only screen and (max-width: 425px) {
+    .container--tabs {
+        width: 120px;
+    }
+
+    .container--report th {
+        padding: 18px 12px 8px 16px;
+        font-size: 16px;
+    }
+
+    .container--report th:after {
+        padding-bottom: 18px;
+    }
+
+    .container--report td {
+        padding: 16px 4px;
+        font-size: 16px;
+    }
+
+    .container--tabs .tab {
+        font-size: 18px;
+    }
+
+    .container{
+        max-width: 380px;
+    }
+
+    .custom-modal--container {
+        max-width: 320px;
+    }
+
+    .budget-form {
+        flex-direction: column;
+        align-items: stretch;
+        padding: 25px 20px;
+    }
+
+    .budget-dropdown {
+        margin-bottom: 14px;
+        font-size: 14px;
+    }
+
+    .budget-dropdown option {
+        padding: 0;
+        font-size: 14px;
+    }
+
+    .budget-input {
+        padding-left: 0;
+    }
+
+    .custom-input-modal {
+        margin-bottom: 14px;
+        padding: 5px 10px 5px 16px;
+        font-size: 14px;
+        width: 100%;
+    }
+
+    .custom-modal--cancel {
+        top: -50px;
+        right: -35px;
+        width: 40px;
+        height: 40px;
+    }
+
+    .inner-container--chart {
+        width: 340px;
+    }
+
+    .container--chart {
+        width: 380px;
+    }
+
+    #q-graph #q1 {
+        left: 0px;
+    }
+
+    #q-graph #q2 {
+        left: 60px;
+    }
+
+    #q-graph #q3 {
+        left: 120px;
+    }
+
+    #q-graph #q4 {
+        left: 160px;
+        top: 130px;
+    }
+
+    #q-graph .bar {
+        width: 20px;
+    }
+
+    #q-graph .expense-bar {
+        left: 25px;
+    }
+
+    .label-bar::before{
+        height: 10px;
+        width: 20px;
+        left: -24px;
+        top: 2px;
+    }
+
+    .label-bar{
+        font-size: 12px;
+    }
+    
+    .chart-title{
+        font-size: 20px
+    }
+}
+
+@media only screen and (max-width: 375px) {
+    .container--tabs {
+        width: 80px;
+        height: 32px;
+    }
+
+    .container--tabs .tabs--active {
+        height: 34px;
+    }
+
+    .tab2 {
+        left: 68px;
+    }
+
+    .container--report th {
+        padding: 18px 12px 8px 16px;
+        font-size: 14px;
+    }
+
+    .container--report th:after {
+        padding-bottom: 18px;
+    }
+
+    .container--report td {
+        padding: 16px 4px;
+        font-size: 14px;
+    }
+
+    .container--tabs .tab {
+        font-size: 14px;
+    }
+
+    .container{
+        max-width: 330px;
+    }
+
+    .add-budget {
+        width: 100px;
+        border-radius: 8px;
+        margin: 0 8px 8px 0;
+        box-shadow: 10px 5px 20px -12px #25729b;
+    }
+
+    .custom-modal--container {
+        max-width: 280px;
+    }
+
+    .inner-container--chart {
+        width: 285px;
+    }
+
+    .container--chart {
+        width: 325px;
+    }
+
+    #q-graph #q1 {
+        left: -10px;
+    }
+
+    #q-graph #q2 {
+        left: 40px;
+    }
+
+    #q-graph #q3 {
+        left: 90px;
+    }
+
+    #q-graph #q4 {
+        left: 130px;
+        top: 120px;
+    }
+
+    #q-graph .bar {
+        width: 15px;
+    }
+
+    #q-graph .expense-bar {
+        left: 30px;
+    }
+
+    .label-bar::before{
+        left: -21px;
+    }
+
+    .label-bar{
+        font-size: 12px;
+    }
+
+    .chart-title{
+        font-size: 16px
+    }
+
+    .label-bar {
+        top: 100px;
+    }
+
+    #q-graph tbody th {
+        font-size: 10px;
+    }
+}
+
+@media only screen and (max-width: 320px) {
+    .container{
+        max-width: 280px;
+    }
+
+    .custom-modal--container {
+        max-width: 240px;
+    }
+
+    .inner-container--chart {
+        width: 240px;
+    }
+
+    .container--chart {
+        width: 280px;
+    }
+
+    #q-graph #q1 {
+        left: -20px;
+    }
+
+    #q-graph #q2 {
+        left: 20px;
+    }
+
+    #q-graph #q3 {
+        left: 60px;
+    }
+
+    #q-graph #q4 {
+        left: 85px;
+        top: 130px;
+    }
+
+    #q-graph .bar {
+        width: 12px;
+    }
+
+    #q-graph .expense-bar {
+        left: 35px;
+    }
+
+    .label-bar::before{
+        left: -21px;
+    }
+
+    .label-bar{
+        font-size: 12px;
+    }
+
+    .chart-title{
+        font-size: 16px
+    }
+
+    #q-graph tbody th {
+        font-size: 10px;
+    }
+
+    .label-bar.expense-amount {
+        right: 30%;
+        position: absolute;
+    }
+
+    .label-bar.income-amount {
+        right: 38%;
+        position: absolute;
+        top: 25%;
+    }
+
+}
+
