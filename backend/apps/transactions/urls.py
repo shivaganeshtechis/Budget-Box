@@ -7,4 +7,5 @@ urlpatterns = [
     path('delete/<int:id>/', views.TransactionDelete.as_view(), name='delete-transactions'),
     path('', views.TransactionList.as_view(), name='list-transactions'),
     path('reports/', views.TransactionReport.as_view(), name='list-report-transactions'),
+    path('expense-reports/', views.ExpenseReport.as_view(), name='expense-report-transactions'),
 ]

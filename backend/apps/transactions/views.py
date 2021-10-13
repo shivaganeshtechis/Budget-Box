@@ -1,13 +1,18 @@
+from django.db.models.fields import DecimalField, FloatField
 from rest_framework.response import Response
 from rest_framework.renderers import JSONRenderer
 from apps.users.mixins import CustomLoginRequiredMixin
-from apps.transactions.serializers import TransactionSerializer
+from apps.transactions.serializers import ListTransactionSerializer, TransactionSerializer
 from apps.transactions.models import Transaction
+from apps.transactions.models import Category
 from rest_framework import generics, status
 from datetime import datetime
 from calendar import monthrange
 from django.db.models import Sum
+from django.db.models.functions import Cast
 from collections import defaultdict
+
+from config.constants import TRANSACTION_TYPE, TRANSACTION_TYPE_DICT
 
 class TransactionAdd(CustomLoginRequiredMixin, generics.CreateAPIView):
     queryset = Transaction.objects.all()
@@ -18,8 +23,19 @@ class TransactionAdd(CustomLoginRequiredMixin, generics.CreateAPIView):
         serializer = TransactionSerializer()
         serializer.validate(request.data)
 
+        category_id = int(request.data['category'])
+
+        category = Category.objects.get(id=category_id)
+        if (category is None):
+            response = Response({'error': "Category not found."}, status=status.HTTP_404_NOT_FOUND)
+            response.accepted_renderer = JSONRenderer()
+            response.accepted_media_type = "application/json"
+            response.renderer_context = {}
+            return response
+
         request.data._mutable = True
-        request.data['user_id'] = request.login_user.id
+        request.data['user'] = request.login_user.id
+        request.data['category'] = category.id
 
         return self.create(request, *args, **kwargs)
 
@@ -44,9 +60,20 @@ class TransactionUpdate(CustomLoginRequiredMixin, generics.UpdateAPIView):
             response.accepted_media_type = "application/json"
             response.renderer_context = {}
             return response
+        
+        category_id = int(request.data['category'])
+
+        category = Category.objects.get(id=category_id)
+        if (category is None):
+            response = Response({'error': "Category not found."}, status=status.HTTP_404_NOT_FOUND)
+            response.accepted_renderer = JSONRenderer()
+            response.accepted_media_type = "application/json"
+            response.renderer_context = {}
+            return response
 
         request.data._mutable = True
         request.data['user_id'] = request.login_user.id
+        request.data['category'] = category.id
 
         return self.update(request, *args, **kwargs)
 
@@ -73,36 +100,72 @@ class TransactionDelete(CustomLoginRequiredMixin, generics.DestroyAPIView):
         return Response({'message': "Success."})
                 
 class TransactionList(CustomLoginRequiredMixin, generics.ListAPIView):
-    serializer_class = TransactionSerializer
+    serializer_class = ListTransactionSerializer
 
     def get(self, request, *args, **kwargs):
-        self.queryset = Transaction.objects.order_by('-created_at').filter(user_id = request.login_user.id)
+        self.queryset = Transaction.objects.order_by('-date').filter(user_id = request.login_user.id)
         return self.list(request, *args, **kwargs)
 
 class TransactionReport(CustomLoginRequiredMixin, generics.ListAPIView):
-    serializer_class = TransactionSerializer
+    serializer_class = ListTransactionSerializer
 
     def get(self, request, *args, **kwargs):
         today = datetime.today()
-        past_months = today.month - 2
+        past_months = today.month - 3
         year = today.year
         start_date = datetime(year, past_months, 1).date()
         end_date = datetime(year, today.month, monthrange(year, today.month)[-1]).date()
         
-        select_data = {"created_at": """strftime('%%m/%%Y', created_at)"""}
+        select_data = {"date": """strftime('%%m/%%Y', date)"""}
 
         transactions = Transaction.objects.filter(
             user_id = request.login_user.id, 
-            created_at__gte=start_date,
-            created_at__lte=end_date
-        ).extra(select_data).values("created_at", 'type').annotate(total_amount=Sum('amount')).order_by('created_at')
+            date__gte=start_date,
+            date__lte=end_date
+        ).extra(select_data).values("date", 'type').annotate(total_amount=Sum('amount')).order_by('date')
 
         list_result = [entry for entry in transactions] 
         groups = defaultdict(list)
         
         for obj in list_result:
-            groups[obj['created_at']].append(obj)
+            groups[obj['date']].append(obj)
 
         new_list = groups.values()
         
         return Response(new_list)
+
+class ExpenseReport(CustomLoginRequiredMixin, generics.ListAPIView):
+    serializer_class = ListTransactionSerializer
+
+    def get(self, request, *args, **kwargs):
+        today = datetime.today()
+        past_months = today.month - 3
+        year = today.year
+        start_date = datetime(year, past_months, 1).date()
+        end_date = datetime(year, today.month, monthrange(year, today.month)[-1]).date()
+        
+        select_data = {"date": """strftime('%%m/%%Y', date)"""}
+
+        total_expense = Transaction.objects.filter(
+            user_id=request.login_user.id, 
+            type='expense', 
+            date__gte=start_date,
+            date__lte=end_date
+        ).extra(select_data).values('date').annotate(total_amount=Sum('amount')).get()['total_amount']
+
+        print("total_expense", total_expense)
+        transactions = Transaction.objects.filter(
+            user_id=request.login_user.id, 
+            type='expense', 
+            date__gte=start_date,
+            date__lte=end_date
+        ).extra(select_data).values('category_id').annotate(
+            total_amount=Sum('amount'), 
+            total_amount_percent=Cast(Sum('amount'), FloatField()) * 100 / total_expense).order_by('date')
+        
+        for dic in transactions:
+            category = Category.objects.filter(id=dic['category_id']).get().name
+            dic['category'] = category
+
+        return Response(transactions)
+

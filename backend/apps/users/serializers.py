@@ -5,7 +5,14 @@ from django.core.exceptions import ValidationError
 from secrets import token_hex
 import datetime
 
+class UserSerializer(serializers.ModelSerializer):
+    password = serializers.CharField(write_only=True)
+    profile = serializers.ImageField(required=True)
 
+    class Meta:
+        model = User
+        fields = ('id', 'name', 'budget', 'profile', 'email', 'password')
+        
 class UserSignUpSerializer(serializers.ModelSerializer):
     email = serializers.CharField(required=True)
     password = serializers.CharField(write_only=True, required=True)
@@ -14,7 +21,7 @@ class UserSignUpSerializer(serializers.ModelSerializer):
 
     class Meta:
         model = User
-        fields = ('id', 'email', 'password', 'token', 'token_expires')
+        fields = ('id', 'name', 'profile', 'email', 'password', 'token', 'token_expires')
 
     # Overide the create method
     def create(self, validate_data):
@@ -40,12 +47,11 @@ class UserSignInSerializer(serializers.ModelSerializer):
 
     class Meta:
         model = User
-        fields = ('id', 'email', 'password', 'token', 'token_expires')
+        fields = ('id', 'profile', 'email', 'password', 'token', 'token_expires')
 
     # Override the create method
     def create(self, validated_data):
         user = User.objects.filter(email=validated_data['email'])
-
         # Check the password
         if len(user) > 0 and check_password(validated_data['password'], user[0].password):
             # Token
