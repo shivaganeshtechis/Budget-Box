@@ -1,8 +1,10 @@
+from apps.users.serializers import UserSerializer
 from .models import Transaction
 from rest_framework import serializers
 
 
 class TransactionSerializer(serializers.ModelSerializer):
+    
     class Meta:
         model = Transaction
         fields = '__all__'
@@ -12,8 +14,14 @@ class TransactionSerializer(serializers.ModelSerializer):
         if 'name' not in data:
             errors['name'] = ['name is required.']
 
+        if 'category' not in data:
+            errors['category'] = ['category is required.']
+
         if 'amount' not in data:
             errors['amount'] = ['amount is required.']
+
+        if 'date' not in data:
+            errors['date'] = ['date is required.']
 
         if 'type' not in data:
             errors['type'] = ['type is required.']
@@ -22,3 +30,11 @@ class TransactionSerializer(serializers.ModelSerializer):
             raise serializers.ValidationError(errors)
 
         return data
+
+class ListTransactionSerializer(serializers.ModelSerializer):
+    user = UserSerializer(many=False, read_only=True)
+    
+    class Meta:
+        model = Transaction
+        fields = '__all__'
+        depth = 1

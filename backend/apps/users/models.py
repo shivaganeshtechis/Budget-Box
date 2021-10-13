@@ -1,17 +1,27 @@
 from django.db import models
+from cloudinary.models import CloudinaryField
 
 class User(models.Model):
     class Meta(object):
         db_table = 'user'
 
+    name = models.CharField(
+        'Name', blank=False, null=False, max_length=255
+    )
     email = models.CharField(
-        'Email', blank=False, null=False, max_length=50
+        'Email', blank=False, null=False, max_length=255
     )
     password = models.CharField(
-        'Password', blank=False, null=False, max_length=50
+        'Password', blank=False, null=False, max_length=255
+    )
+    budget = models.IntegerField(
+        'Budget', blank=False, null=False, default=0
     )
     token = models.CharField(
         'Token', blank=True, null=True, max_length=500, db_index=True
+    )
+    profile = CloudinaryField(
+        "Profile Picture", blank=True, null=True
     )
     token_expires = models.DateTimeField(
         'Token Expiration Date', blank=True, null=True
