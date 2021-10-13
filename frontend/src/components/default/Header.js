@@ -4,6 +4,8 @@ import { Link, useHistory } from "react-router-dom";
 import { signOutAction } from '../../reducks/users/actions';
 import { getUser } from '../../reducks/users/selectors';
 
+import Logo from '../../assets/images/logo.png';
+
 const Header = () => {
     const history = useHistory()
     const dispatch = useDispatch();
@@ -15,8 +17,7 @@ const Header = () => {
     return (
         <header className="header">
             <Link to="/">
-                <strong>Budget</strong>
-                <span>notebook</span>
+                <img src={Logo} alt="Logo" height="40" width="96" />
             </Link>
             <div>
             {

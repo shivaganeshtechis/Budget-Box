@@ -6,6 +6,8 @@ import SignIn from "./containers/SignIn";
 import Report from "./containers/Report";
 import { fetchUserFromLocalStorage } from "./reducks/users/operations";
 import { getUser } from "./reducks/users/selectors";
+import Transaction from "./containers/Transaction";
+import MyProfile from "./containers/MyProfile";
 
 const Router = () => {
     const dispatch = useDispatch();
@@ -22,6 +24,8 @@ const Router = () => {
             <Switch>
                 <Route exact path={"/"} component={token ? Report : Home} />
                 <Route exact path={"/sign-in"} component={token ? Report : SignIn} />
+                <Route exact path={"/transaction"} component={token ? Transaction : SignIn} />
+                <Route exact path={"/profile"} component={token ? MyProfile : SignIn} />
             </Switch>
         </React.Fragment>
     );

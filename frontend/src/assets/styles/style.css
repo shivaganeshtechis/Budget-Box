@@ -15,25 +15,26 @@ html, body, #root {
     font-family: 'Avenir', Helvetica, sans-serif !important;
     display: flex;
     flex-direction: column;
+    background-color: #000;
+    color: #f7fafa;
 }
 
-/* Flex */
-
-.d-flex {
+.main-wrapper {
     display: flex;
-}
-
-.flex-column {
     flex-direction: column;
+    flex: 1;
 }
 
-.justify-content-center {
-    justify-content: center;
+.content-wrapper {
+    display: flex;
+    flex: 1;
 }
 
-.align-items-center {
-    align-items: center;
+.content {
+    flex: 1;
+    padding: 16px;
 }
+
 
 /* text */
 
@@ -130,7 +131,7 @@ input:focus
     font-size: inherit;
     font-weight: bold;
     margin: 24px auto 12px auto;
-    color: #003664;
+    color: #2c2c2c;
     background-color: #FFFFFF;
     transition: .2s ease-out;
     cursor: pointer;

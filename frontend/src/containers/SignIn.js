@@ -67,7 +67,7 @@ export default function SignIn() {
                         onChange={handleInputChange}
                     />
                     {errors.password ? <span className="error-text">{errors.password[0]}</span> : null}
-                    <button type="button" className="custom-btn active" onClick={onSubmit}>{`${isLoading ? 'Logging In' : 'Login'}`}</button>
+                    <button type="button" className="custom-btn" onClick={onSubmit}>{`${isLoading ? 'Logging In' : 'Login'}`}</button>
                 </form>
             </div>
         </>
