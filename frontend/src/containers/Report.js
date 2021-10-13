@@ -4,7 +4,7 @@ import { Page, Section } from 'react-page-layout';
 export default function Report() {
 
 	return (
-		<Page layout="public">
+		<Page layout="default">
 			<Section slot="main">
 				<div className="dashboard">
 					<div className="dashboard-left">

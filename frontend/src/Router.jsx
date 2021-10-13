@@ -1,7 +1,7 @@
 import React, { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { Route, Switch } from "react-router-dom";
-import Home from "./containers/Home";
+import Home from "./containers/Landing";
 import SignIn from "./containers/SignIn";
 import Report from "./containers/Report";
 import { fetchUserFromLocalStorage } from "./reducks/users/operations";
