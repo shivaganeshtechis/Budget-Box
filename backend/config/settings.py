@@ -46,8 +46,8 @@ INSTALLED_APPS = [
     'rest_framework',
     'cloudinary',
     'apps.users',
-    'apps.transactions',
     'apps.categories',
+    'apps.transactions',
 ]
 
 MIDDLEWARE = [
