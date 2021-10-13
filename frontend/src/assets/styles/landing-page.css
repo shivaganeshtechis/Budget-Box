@@ -15,27 +15,27 @@
     top: 48px;
 }
 
-.landing-page .big-text {
+.big-text {
     font-size: 70px;
     font-weight: bold;
 }
 
-.landing-page .small-text {
+.small-text {
     font-size: 28px;
 }
 
-.landing-page form {
+form {
     color: #fff;
     display: flex;
     flex-direction: column;
     max-width: 320px;
 }
 
-.landing-page form label {
+form label {
     margin: .5rem;
 }
 
-.landing-page form input {
+form input {
     background-color: rgba(194, 215, 226, .45);
     border-radius: .5rem;
     border: none;
@@ -45,7 +45,7 @@
     color: #f8f5f5;
 }
 
-.landing-page form button {
+form button {
     height: 40px;
     border-radius: 12px;
     border: 1px solid #707070;
@@ -58,12 +58,12 @@
     cursor: pointer;
     padding: 0 30px;
 }
-.landing-page form button:hover{
+form button:hover{
     color: #FFFFFF;
     background-color: #003664;
 }
 
-.landing-page form input::placeholder {
+form input::placeholder {
     color: #f8f5f5;
     opacity: 1;
 }
@@ -91,11 +91,11 @@
 }
 
 @media only screen and (max-width: 768px ) {
-    .landing-page .big-text {
+    .big-text {
         font-size: 60px;
     }
     
-    .landing-page .small-text {
+    .small-text {
         font-size: 24px;
     }
 }
