@@ -5,6 +5,7 @@ import dashboard from '../../assets/images/dashboard_white.png';
 import list from '../../assets/images/list_alt.png';
 import profile from '../../assets/images/account_circle.png';
 import { Link } from 'react-router-dom';
+import Breadcrumbs from './SecondNavBar';
 
 export default function DefaultLayout() {
     return (
@@ -27,7 +28,10 @@ export default function DefaultLayout() {
                         </li></Link>
                     </ul>
                 </aside>
-                <Slot name="main" component="section" className="content" />
+                <div className="content">
+                    <Slot name="breadcrumbs" className="second-nav-bar" />
+                    <Slot name="main" component="section" />
+                </div>
             </div>
         </div>
     )

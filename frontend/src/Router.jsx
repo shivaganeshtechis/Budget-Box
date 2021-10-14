@@ -3,7 +3,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { Route, Switch } from "react-router-dom";
 import Home from "./containers/Landing";
 import SignIn from "./containers/SignIn";
-import Report from "./containers/Report";
+import Report from "./containers/Dashboard";
 import { fetchUserFromLocalStorage } from "./reducks/users/operations";
 import { getUser } from "./reducks/users/selectors";
 import Transaction from "./containers/Transaction";

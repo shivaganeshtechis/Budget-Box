@@ -12,6 +12,7 @@ export default function SingupForm() {
     const errors = getUser(selector).errors;
 
     const initialValues = {
+        name: "",
         email: "",
         password: "",
         password_confirmation: ""
@@ -43,8 +44,18 @@ export default function SingupForm() {
 
     return (
         <form action="#">
+            <label htmlFor="name">Name</label>
+            <input
+                id="name"
+                name="name"
+                type="text"
+                value={values.name}
+                onChange={handleInputChange}
+                placeholder="Type your name"
+            />
             <label htmlFor="email">Email address</label>
             <input
+                id="email"
                 name="email"
                 type="email"
                 value={values.email}

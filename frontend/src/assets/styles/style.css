@@ -32,8 +32,19 @@ html, body, #root {
 
 .content {
     flex: 1;
+    padding: 0 48px 48px 48px;
 }
 
+.second-nav-bar {
+    display: flex;
+    justify-content: space-between;
+    padding: 32px 0;
+}
+
+.second-nav-bar-title {
+    font-size: 32px;
+    font-weight: bold;
+}
 
 /* text */
 
@@ -85,7 +96,11 @@ html, body, #root {
     margin-left: 0.5rem !important;
 }
 
-/* Margin */
+/* Padding */
+
+.p-0 {
+    padding: 0 !important;
+}
 
 .p-1 {
     padding: .5rem !important;

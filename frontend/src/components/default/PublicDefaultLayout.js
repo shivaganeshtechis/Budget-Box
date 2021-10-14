@@ -7,7 +7,7 @@ export default function PublicDefaultLayout() {
         <div className="main-wrapper">
             <Header />
             <div className="content-wrapper">
-                <Slot name="main" component="section" className="content" />
+                <Slot name="main" component="section" className="content p-0" />
             </div>
         </div>
     )

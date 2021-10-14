@@ -71,12 +71,23 @@ form input::placeholder {
 .input-group {
     border-radius: .5rem;
     width: 100%;
+    position: relative;
+}
+
+.input-group::after {
+    content: "";
+    position: absolute;
+    height: 1px;
+    background: #ffffff80;
+    width: 90%;
+    left: 50%;
+    transform: translateX(-50%);
 }
 
 .input-group input {
     width: 100%;
     border-radius: 0 !important;
-    border-bottom: 1px solid #fff !important;
+    /* border-bottom: 1px solid #fff !important; */
 }
 
 .input-group input:first-child {
