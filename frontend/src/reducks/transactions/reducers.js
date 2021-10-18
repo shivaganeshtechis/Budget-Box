@@ -54,6 +54,11 @@ export const TransactionsReducer = (state = initialState.transactions, action) =
                 ...state,
                 reports: action.payload.reports
             }
+        case Actions.FETCH_EXPENSE_REPORT:
+            return {
+                ...state,
+                expenseReports: action.payload.reports
+            }
         default:
             return state;
     }

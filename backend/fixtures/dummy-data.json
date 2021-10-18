@@ -102,7 +102,7 @@
 		"pk": 1,
 		"fields": {
 			"name": "Utility",
-			"color_code": "#000000",
+			"color_code": "#ff0000",
             "created_at": "2021-10-12T10:50:19.156Z",
 			"updated_at": "2021-10-12T10:50:19.156Z"
 		}
@@ -112,7 +112,7 @@
 		"pk": 2,
 		"fields": {
 			"name": "Food",
-			"color_code": "#000000",
+			"color_code": "#00ff00",
             "created_at": "2021-10-12T10:50:26.908Z",
 			"updated_at": "2021-10-12T10:50:26.908Z"
 		}
@@ -122,7 +122,7 @@
 		"pk": 3,
 		"fields": {
 			"name": "Transportation",
-			"color_code": "#000000",
+			"color_code": "#0abc00",
             "created_at": "2021-10-12T10:50:30.255Z",
 			"updated_at": "2021-10-12T10:50:30.255Z"
 		}
@@ -132,7 +132,7 @@
 		"pk": 4,
 		"fields": {
 			"name": "Education",
-			"color_code": "#000000",
+			"color_code": "#0000ff",
             "created_at": "2021-10-12T10:50:34.543Z",
 			"updated_at": "2021-10-12T10:50:34.543Z"
 		}
@@ -142,7 +142,7 @@
 		"pk": 5,
 		"fields": {
 			"name": "Medical",
-			"color_code": "#000000",
+			"color_code": "#00fe00",
             "created_at": "2021-10-12T10:50:39.298Z",
 			"updated_at": "2021-10-12T10:50:39.298Z"
 		}
@@ -152,7 +152,7 @@
 		"pk": 6,
 		"fields": {
 			"name": "House",
-			"color_code": "#000000",
+			"color_code": "#00fe00",
             "created_at": "2021-10-12T10:50:42.075Z",
 			"updated_at": "2021-10-12T10:50:42.075Z"
 		}
@@ -162,7 +162,7 @@
 		"pk": 7,
 		"fields": {
 			"name": "Internet & TV",
-			"color_code": "#000000",
+			"color_code": "#12345678",
             "created_at": "2021-10-12T10:50:45.826Z",
 			"updated_at": "2021-10-12T10:50:45.826Z"
 		}
@@ -212,7 +212,7 @@
 		"pk": 12,
 		"fields": {
 			"name": "Insurance",
-			"color_code": "#000000",
+			"color_code": "#0000ff",
             "created_at": "2021-10-12T10:51:05.434Z",
 			"updated_at": "2021-10-12T10:51:05.434Z"
 		}
@@ -222,7 +222,7 @@
 		"pk": 13,
 		"fields": {
 			"name": "Salary",
-			"color_code": "#000000",
+			"color_code": "#00ff00",
             "created_at": "2021-10-12T10:51:08.211Z",
 			"updated_at": "2021-10-12T10:51:08.211Z"
 		}
@@ -232,7 +232,7 @@
 		"pk": 14,
 		"fields": {
 			"name": "Other",
-			"color_code": "#000000",
+			"color_code": "#FF0000",
             "created_at": "2021-10-12T10:51:11.994Z",
 			"updated_at": "2021-10-12T10:51:11.995Z"
 		}

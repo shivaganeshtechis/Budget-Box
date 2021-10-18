@@ -5,3 +5,8 @@ export const getTransactions = createSelector(
     [transactionsSelector],
     state => state
 );
+
+export const getExpenseReport = createSelector(
+    [transactionsSelector],
+    state => state.expenseReports
+);

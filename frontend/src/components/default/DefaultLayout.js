@@ -5,7 +5,6 @@ import dashboard from '../../assets/images/dashboard_white.png';
 import list from '../../assets/images/list_alt.png';
 import profile from '../../assets/images/account_circle.png';
 import { Link } from 'react-router-dom';
-import Breadcrumbs from './SecondNavBar';
 
 export default function DefaultLayout() {
     return (
@@ -15,15 +14,15 @@ export default function DefaultLayout() {
                 <aside className="sidebar">
                     <ul>
                         <Link to="/"><li>
-                            <img width="40" height="40" src={dashboard} />
+                            <img width="40" height="40" src={dashboard} alt="dashboard-icon" />
                             <span>Dashboard</span>
                         </li></Link>
                         <Link to="/transaction"><li>
-                            <img width="40" height="40" src={list} />
+                            <img width="40" height="40" src={list} alt="list-icon" />
                             <span>Transaction List</span>
                         </li></Link>
                         <Link to="/profile"><li>
-                            <img width="40" height="40" src={profile} />
+                            <img width="40" height="40" src={profile} alt="profile-icon" />
                             <span>My Profile</span>
                         </li></Link>
                     </ul>

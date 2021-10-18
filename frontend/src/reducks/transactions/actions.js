@@ -49,3 +49,11 @@ export const fetchReportTransactionsAction = (reports) => {
         payload: { reports }
     }
 }
+
+export const FETCH_EXPENSE_REPORT = "FETCH_EXPENSE_REPORT";
+export const fetchExpenseReportAction = (reports) => {
+    return {
+        type: FETCH_EXPENSE_REPORT,
+        payload: { reports }
+    }
+}

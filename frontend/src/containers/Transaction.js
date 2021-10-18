@@ -1,7 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { Page, Section } from "react-page-layout";
 import { useDispatch, useSelector } from "react-redux";
-import { useHistory } from "react-router";
 
 import TransactionIcon from "../assets/images/transaction.svg";
 import AddTransactionBtn from "../components/default/AddTransaction";

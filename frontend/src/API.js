@@ -108,4 +108,10 @@ export default class API {
 				requireToken: true
 			})
 	};
+
+	getExpenseReport = () => {
+		return api.get('/transactions/expense-reports/', {
+			requireToken: true
+		});
+	}
 }

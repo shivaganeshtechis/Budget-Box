@@ -3,6 +3,7 @@ import {
     addTransactionAction,
     deleteTransactionAction,
     errorTransactionAction,
+    fetchExpenseReportAction,
     fetchReportTransactionsAction,
     fetchTransactionsAction,
     updateTransactionAction,
@@ -56,5 +57,12 @@ export const fetchReportTransactions = (params = {}) => {
     return async (dispatch) => {
         return api.getReportTransactions(params)
             .then(report => dispatch(fetchReportTransactionsAction(report)));
+    }
+}
+
+export const fetchExpenseReport = (params = {}) => {
+    return async (dispatch) => {
+        return api.getExpenseReport(params)
+            .then(report => dispatch(fetchExpenseReportAction(report)));
     }
 }

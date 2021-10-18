@@ -22,7 +22,8 @@ const initialState = {
             type: null,
             amount: null,
         },
-        reports: []
+        reports: [],
+        expenseReports: []
     }
 }
 

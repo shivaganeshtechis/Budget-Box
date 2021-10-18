@@ -12,7 +12,7 @@ export default function Landing() {
                 <span className="small-text mb-3">Note down your expenditure and income, <br /> then check your balance everyday</span>
 
                 <SingupForm />
-                <img className="exmaple-image" src={exampleImage} />
+                <img className="exmaple-image" src={exampleImage} alt="exampe-pic" />
                 </div>
             </Section>
         </Page>
