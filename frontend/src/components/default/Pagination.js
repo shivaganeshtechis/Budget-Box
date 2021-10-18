@@ -1,4 +1,3 @@
-// import iconGray from './../../assets/img/icon-gray.svg';
 import { useDispatch } from 'react-redux';
 import { Link } from 'react-router-dom';
 
@@ -39,7 +38,6 @@ const Pagination = (props) => {
 
 	elements.unshift(previous ? getPage({ key: "prev", page: prevPage, label: "Previous" }) : "");
 	elements.push(next ? getPage({ key: "next", page: nextPage, label: "Next" }) : "");
-
 	return elements;
 };
 

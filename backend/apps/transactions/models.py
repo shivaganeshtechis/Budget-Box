@@ -25,7 +25,7 @@ class Transaction(models.Model):
             MinValueValidator(1)
         ]
     )
-    date = models.DateTimeField(
+    date = models.DateField(
         'Date', blank=False, null=False
     )
     created_at = models.DateTimeField(

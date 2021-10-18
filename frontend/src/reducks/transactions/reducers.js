@@ -36,6 +36,18 @@ export const TransactionsReducer = (state = initialState.transactions, action) =
             return {
                 ...state,
                 errors: action.payload.errors.response.data,
+                isError: true
+            }
+        case Actions.RESET_ERRORS_TRANSACTION:
+            return {
+                ...state,
+                errors: {
+                    date: null,
+                    category: null,
+                    name: null,
+                    type: null,
+                    amount: null,
+                },
             }
         case Actions.FETCH_REPORT_TRANSACTIONS:
             return {

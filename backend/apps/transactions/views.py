@@ -12,8 +12,6 @@ from django.db.models import Sum
 from django.db.models.functions import Cast
 from collections import defaultdict
 
-from config.constants import TRANSACTION_TYPE, TRANSACTION_TYPE_DICT
-
 class TransactionAdd(CustomLoginRequiredMixin, generics.CreateAPIView):
     queryset = Transaction.objects.all()
     serializer_class = TransactionSerializer
@@ -22,7 +20,6 @@ class TransactionAdd(CustomLoginRequiredMixin, generics.CreateAPIView):
 
         serializer = TransactionSerializer()
         serializer.validate(request.data)
-
         category_id = int(request.data['category'])
 
         category = Category.objects.get(id=category_id)
@@ -72,7 +69,7 @@ class TransactionUpdate(CustomLoginRequiredMixin, generics.UpdateAPIView):
             return response
 
         request.data._mutable = True
-        request.data['user_id'] = request.login_user.id
+        request.data['user'] = request.login_user.id
         request.data['category'] = category.id
 
         return self.update(request, *args, **kwargs)
@@ -164,8 +161,9 @@ class ExpenseReport(CustomLoginRequiredMixin, generics.ListAPIView):
             total_amount_percent=Cast(Sum('amount'), FloatField()) * 100 / total_expense).order_by('date')
         
         for dic in transactions:
-            category = Category.objects.filter(id=dic['category_id']).get().name
-            dic['category'] = category
+            category = Category.objects.filter(id=dic['category_id']).get()
+            dic['category_name'] = category.name
+            dic['category_color'] = category.color_code
 
         return Response(transactions)
 

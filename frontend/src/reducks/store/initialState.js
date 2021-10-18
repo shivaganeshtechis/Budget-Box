@@ -5,6 +5,9 @@ const initialState = {
             password: null
         }
     },
+    categories: {
+        results: [],
+    },
     transactions: {
         results: [],
         count: 0,
@@ -13,7 +16,10 @@ const initialState = {
         next: null,
         previous: null,
         errors: {
+            date: null,
+            category: null,
             name: null,
+            type: null,
             amount: null,
         },
         reports: []

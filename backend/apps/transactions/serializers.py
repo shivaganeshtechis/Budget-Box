@@ -11,19 +11,19 @@ class TransactionSerializer(serializers.ModelSerializer):
 
     def validate(self, data):
         errors = {}
-        if 'name' not in data:
+        if 'name' not in data or not data['name']:
             errors['name'] = ['name is required.']
 
-        if 'category' not in data:
+        if 'category' not in data or not data['category']:
             errors['category'] = ['category is required.']
 
         if 'amount' not in data:
             errors['amount'] = ['amount is required.']
 
-        if 'date' not in data:
+        if 'date' not in data or not data['date']:
             errors['date'] = ['date is required.']
 
-        if 'type' not in data:
+        if 'type' not in data or not data['type']:
             errors['type'] = ['type is required.']
 
         if bool(errors):

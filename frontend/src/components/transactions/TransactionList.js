@@ -1,18 +1,19 @@
 const TransactionList = (props) => {
-	const { created_at, name, amount, type } = props.data.transaction;
+	const { date, name, amount, type, category } = props.data.transaction;
 
 	const getDate = (date) => {
-		return new Date(date).toLocaleDateString("en-ZA", {
-			month: "numeric",
+		return new Date(date).toLocaleDateString("en-CA", {
 			day: "numeric",
 			year: "numeric",
+			month: "short",
 		});
 	};
 
 	if (type === "income") {
 		return (
 			<tr onClick={props.data.onClick}>
-				<td>{getDate(created_at)}</td>
+				<td>{getDate(date)}</td>
+				<td>{category.name}</td>
 				<td>{name}</td>
 				<td className="income-amount">
 					<span> + </span> ${amount}
@@ -22,7 +23,8 @@ const TransactionList = (props) => {
 	} else {
 		return (
 			<tr onClick={props.data.onClick}>
-				<td>{getDate(created_at)}</td>
+				<td>{getDate(date)}</td>
+				<td>{category.name}</td>
 				<td>{name}</td>
 				<td className="expense-amount">
 					<span> - </span> ${amount}

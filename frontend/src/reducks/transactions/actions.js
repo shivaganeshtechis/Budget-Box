@@ -35,6 +35,13 @@ export const errorTransactionAction = (errors) => {
     }
 }
 
+export const RESET_ERRORS_TRANSACTION = "RESET_ERRORS_TRANSACTION";
+export const resetErrorTransactionAction = () => {
+    return {
+        type: RESET_ERRORS_TRANSACTION,
+    }
+}
+
 export const FETCH_REPORT_TRANSACTIONS = "FETCH_REPORT_TRANSACTIONS";
 export const fetchReportTransactionsAction = (reports) => {
     return {

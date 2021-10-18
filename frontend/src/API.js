@@ -100,4 +100,12 @@ export default class API {
             requireToken: true
         });
     }
+
+	// Categories
+	getCategories = () => {
+		return api
+			.get("/categories/", {
+				requireToken: true
+			})
+	};
 }

@@ -35,43 +35,51 @@
 * Table
 ******************************/
 
-.container--report table {
-    border-collapse: separate;
+.table-container table {
+    border-collapse: collapse;
     border-spacing: 0pt;
-    border: 1px solid #003664;
+    /* border: 1px solid #003664; */
+    width: 100%;
     border-radius: 12px;
 }
 
-.container--report thead tr th:not(:last-child) {
+/* .table-container thead tr th:not(:last-child) {
     border-right: 1px solid #003664 
 }
 
-.container--report tbody tr td:not(:last-child) {
+.table-container tbody tr td:not(:last-child) {
     border-right: 1px solid #003664 
+} */
+
+.table-container th {
+    padding: 17px 0;
+    border-bottom: 1px solid #FFFFFF;
+    color: #FFFFFF;
+    width: 320px;
+    font-size: 20px;
 }
 
-.container--report th {
-    padding: 24px 32px 8px 32px;
-    color: #003664;
-    width: 170px;
+/* .table-container th:after {
+    content: "";
+    display: block;
+    border-bottom: 1px solid #FFFFFF;
+    padding-bottom: 24px;
+} */
+
+.table-container tbody tr:not(:last-child) {
+    border-bottom: 1px solid #FFFFFF;
+}
+
+.table-container td {
+    padding: 14px 0;
+    text-align: center;
+    color: #FFFFFF;
     font-size: 18px;
 }
 
-.container--report th:after {
-    content: "";
-    display: block;
-    border-bottom: 1px solid #003664;
-    padding-bottom: 24px;
-}
-
-.container--report td {
-    padding: 17px 32px;
-    text-align: center;
-    color: #003664;
-}
-
 .table-container tbody tr:hover{
-    background-color: #00356427;
+    background-color: #ffffff27;
+    transition: 0.2s;
     cursor: pointer;
 }
 
@@ -84,33 +92,35 @@
 	flex-direction: column;
 	align-items: center;
 	height: 100%;
-    margin-top: 3rem;
+    /* margin-top: 3rem; */
 }
 
-.container--report .expense-amount {
+.table-container .expense-amount {
     letter-spacing: 1px;
     color: #FF0000;
     font-weight: bold;
 }
 
-.container--report .expense-amount span {
+.table-container .expense-amount span {
     font-size: 16px;
 }
 
-.container--report .income-amount {
+.table-container .income-amount {
     letter-spacing: 1px;
     color: #2AC904;
     font-weight: bold;
 }
 
 .table-container {
-    background-color: #BBDCEB;
+    background-color: #2c2c2c;
     margin-bottom: 16px;
-    padding: 20px;
+    border-radius: 12px;
+    padding: 10px 10px;
+    width: 100%;
 }
 
 .no-transaction-container {
-    width: 790px;
+    text-align: center;
 }
 
 .pagination {
@@ -122,11 +132,13 @@
 
 .pagination a {
     text-decoration: none;
-    color: #003664;
-    margin-right: 24px;
+    color: #FFFFFF;
+    margin: 0 15px;
+    font-size: 18px;
 }
 
 .pagination a p {
+    font-size: 18px;
     width: 15px;
 }
 
@@ -135,7 +147,7 @@
 }
 
 .container {
-    max-width: 790px;
+    /* max-width: 790px; */
     min-height: 16em;
 }
 
@@ -181,39 +193,31 @@
     box-shadow: 10px -8px 20px -13px #25729b
 }
 
-.content--active {
-    display: block;
-}
-
 .add-budget {
     display: flex;
     flex-direction: row;
     align-items: center;
     justify-content: space-around;
     width: 120px;
-    height: 40px;
-    border: 3px solid #003664;
-    border-radius: 12px;
+    height: 42px;
+    /* border: 3px solid #003664; */
+    background-color: #FFFFFF;
+    border-radius: 8px;
     cursor: pointer;
-    margin: 0 18px 10px 0;
-    box-shadow: 10px 5px 20px -12px #25729b
+    /* margin: 0 18px 10px 0; */
+    /* box-shadow: 10px 5px 20px -12px #25729b */
 }
 
 .add-budget img {
-    width: 20%;
+    width: 30%;
     font-weight: bold;
 }
 
 .add-budget p {
-    color: #003664;
-    font-size: 18px;
+    color: #000000;
+    font-size: 20px;
     font-weight: 700;
-}
-
-.container-header {
-    display: flex;
-    justify-content: space-between;
-    align-items: flex-end;
+    margin: 4px 0px 0 10px;
 }
 
 .custom-modal {
@@ -246,15 +250,14 @@
 }
 
 .custom-modal--content {
-	background: #64C2EE;
+	background: #2c2c2c;
 	width: 100%;
-	padding: 10px 20px;
+	padding: 30px 20px;
 	position: relative;
 	z-index: 9993;
 	animation: customModalAnimate 0.4s;
 	transition: all 0.1s ease-in;
-    border-radius: 12px;
-    box-shadow: 10px 10px 20px -10px #25729b
+    border-radius: 8px;
 }
 
 .custom-modal--content .modal-content {
@@ -265,20 +268,19 @@
 }
 
 .custom-modal-transaction--content {
-	background: #64C2EE;
+	background: #2c2c2c;
 	width: 100%;
-	padding: 20px 20px;
+	padding: 28px 28px;
 	position: relative;
 	z-index: 9993;
 	animation: customModalAnimate 0.4s;
 	transition: all 0.1s ease-in;
-    border-radius: 12px;
-    box-shadow: 10px 10px 20px -10px #25729b
+    border-radius: 8px;
 }
 
 .custom-modal-transaction--container {
 	width: 100%;
-	max-width: 310px;
+	max-width: 340px;
     text-align: center;
     max-height: 100%;
 	position: absolute;
@@ -318,7 +320,7 @@
     right: -45px;
     width: 40px;
     height: 40px;
-    background: #64c2eeba;
+    background: #ffffffba;
     border-radius: 50%;
     box-shadow: 5px 5px 10px -7px #25729b;
     align-items: center;
@@ -345,34 +347,52 @@
 }
 
 .custom-input-modal {
-	height: 40px;
-    border: 1px solid #fff;
+	/* height: 40px; */
+    /* border: 1px solid #fff; */
+    background-color: #FFFFFF;
+    border-radius: 4px;
+    color: #000000;
     padding: 5px 10px 5px 16px;
-    font-size: 14px;
+    font-size: 18px;
+    margin-top: 5px;
+    width: 100%;
 }
 
 .budget-form {
     display: flex;
-    flex-direction: row;
+    flex-direction: column;
     justify-content: space-between;
     align-items: flex-start;
-    padding: 40px 20px;
+    padding: 16px 0;
 }
 
 .budget-input {
-    display: flex;
-    flex-direction: column;
-    padding-left: 24px;
+    /* display: flex;
+    flex-direction: column; */
+    /* padding-left: 24px; */
 }
 
 .budget-dropdown {
-    padding: 10px 4px;
-    font-size: 16px;
+    padding: 10px;
+    font-size: 18px;
 }
 
 .budget-input .custom-btn {
     margin: 12px auto 12px auto;
-    height: 34px;
+    background-color: #FFFFFF;
+    color: #000000;
+    height: 45px;
+    font-size: 20px;
+    border-radius: 4px;
+}
+
+.budget-input .custom-btn:hover{
+    background-color: #2c2c2c;
+    color: #FFFFFF;
+}
+
+.budget-input label {
+    margin: 0;
 }
 
 
@@ -626,16 +646,16 @@
         width: 120px;
     }
 
-    .container--report th {
+    .table-container th {
         padding: 18px 12px 8px 16px;
         font-size: 16px;
     }
 
-    .container--report th:after {
+    /* .table-container th:after {
         padding-bottom: 18px;
-    }
+    } */
 
-    .container--report td {
+    .table-container td {
         padding: 16px 4px;
         font-size: 16px;
     }
@@ -749,16 +769,16 @@
         left: 68px;
     }
 
-    .container--report th {
+    .table-container th {
         padding: 18px 12px 8px 16px;
         font-size: 14px;
     }
 
-    .container--report th:after {
+    /* .table-container th:after {
         padding-bottom: 18px;
-    }
+    } */
 
-    .container--report td {
+    .table-container td {
         padding: 16px 4px;
         font-size: 14px;
     }
@@ -774,7 +794,7 @@
     .add-budget {
         width: 100px;
         border-radius: 8px;
-        margin: 0 8px 8px 0;
+        /* margin: 0 8px 8px 0; */
         box-shadow: 10px 5px 20px -12px #25729b;
     }
 
