@@ -1,11 +1,11 @@
-import React, { useEffect } from "react";
+import React, { useEffect } from 'react';
 import { Page, Section } from 'react-page-layout';
-import { useDispatch, useSelector } from "react-redux";
-import PieChart from "../components/dashboard/PieChart";
-import Breadcrumbs from "../components/default/SecondNavBar";
-import { fetchCategories } from "../reducks/category/operations";
-import { fetchExpenseReport } from "../reducks/transactions/operations";
-import { getExpenseReport } from "../reducks/transactions/selectors";
+import { useDispatch, useSelector } from 'react-redux';
+
+import PieChart from '../components/dashboard/PieChart';
+import Breadcrumbs from '../components/default/SecondNavBar';
+import { fetchExpenseReport } from '../reducks/transactions/operations';
+import { getExpenseReport } from '../reducks/transactions/selectors';
 
 export default function Report() {
 

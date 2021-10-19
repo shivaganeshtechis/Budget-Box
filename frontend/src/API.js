@@ -60,6 +60,14 @@ export default class API {
 		return api.post("/users/signin/", formData);
 	};
 
+	updateProfile = async (updateProfileBody, id) => {
+		const formData = new FormData();
+		for (const key in updateProfileBody) {
+			formData.append(key, updateProfileBody[key]);
+		}
+		return api.put(`/users/update/${id}/`, formData, { requireToken: true });
+	};
+
 	// Transactions
 	getTransactions = (query) => {
 		const { page } = query;

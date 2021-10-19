@@ -1,25 +1,25 @@
-import React, { useEffect, useState } from "react";
-import { Page, Section } from "react-page-layout";
-import { useDispatch, useSelector } from "react-redux";
+import React, { useEffect, useState } from 'react';
+import { Page, Section } from 'react-page-layout';
+import { useDispatch, useSelector } from 'react-redux';
 
-import TransactionIcon from "../assets/images/transaction.svg";
-import AddTransactionBtn from "../components/default/AddTransaction";
-import Empty from "../components/default/Empty";
-import Pagination from "../components/default/Pagination";
-import SecondNavBar from "../components/default/SecondNavBar";
-import ManageTransactionModal from "../components/transactions/AddTransaction";
-import TransactionList from "../components/transactions/TransactionList";
-import { fetchCategories } from "../reducks/category/operations";
-import { getCategories } from "../reducks/category/selectors";
-import { resetErrorTransactionAction } from "../reducks/transactions/actions";
+import TransactionIcon from '../assets/images/transaction.svg';
+import AddTransactionBtn from '../components/default/AddTransactionBtn';
+import Empty from '../components/default/Empty';
+import Pagination from '../components/default/Pagination';
+import SecondNavBar from '../components/default/SecondNavBar';
+import ManageTransactionModal from '../components/transactions/ManageTransactionModal';
+import TransactionList from '../components/transactions/TransactionList';
+import { fetchCategories } from '../reducks/category/operations';
+import { getCategories } from '../reducks/category/selectors';
+import { resetErrorTransactionAction } from '../reducks/transactions/actions';
 import {
-	addTransaction,
-	deleteTransaction,
-	fetchReportTransactions,
-	fetchTransactions,
-	updateTransaction,
-} from "../reducks/transactions/operations";
-import { getTransactions } from "../reducks/transactions/selectors";
+    addTransaction,
+    deleteTransaction,
+    fetchReportTransactions,
+    fetchTransactions,
+    updateTransaction,
+} from '../reducks/transactions/operations';
+import { getTransactions } from '../reducks/transactions/selectors';
 
 export default function Transaction() {
 	const dispatch = useDispatch();
@@ -117,7 +117,7 @@ export default function Transaction() {
 						values,
 					}}
 				/>
-				<div className="homepage">
+				<div className="transaction">
 					<div className="table-container">
 						{transactions.results && transactions.results.length > 0 ? (
 							<table>

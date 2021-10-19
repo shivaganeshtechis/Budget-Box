@@ -1,10 +1,9 @@
-from django.shortcuts import render
 from rest_framework import generics
 from rest_framework.response import Response
 
 from apps.users.mixins import CustomLoginRequiredMixin
 from .models import User
-from .serializers import UserSerializer, UserSignInSerializer, UserSignUpSerializer
+from .serializers import UserSerializer, UserSignInSerializer, UserSignUpSerializer, UserUpdateSerializer
 
 class UserSignUp(generics.CreateAPIView):
     queryset = User.objects.all()
@@ -22,3 +21,15 @@ class UserProfile(CustomLoginRequiredMixin, generics.ListAPIView):
     def get(self, request, *args, **kwargs):
         serializer = UserSerializer([request.login_user], many=True)
         return Response(serializer.data[0])
+
+class UpdateProfile(CustomLoginRequiredMixin, generics.UpdateAPIView):
+    serializer_class = UserUpdateSerializer
+    queryset = User.objects.all()
+    lookup_field = 'id'
+
+    def put(self, request, *args, **kwargs):
+
+        serializer = UserUpdateSerializer()
+        serializer.validate(request.data)
+
+        return self.update(request, *args, **kwargs)

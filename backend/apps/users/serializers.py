@@ -6,18 +6,37 @@ from secrets import token_hex
 import datetime
 
 class UserSerializer(serializers.ModelSerializer):
-    password = serializers.CharField(write_only=True)
-    profile = serializers.ImageField(required=True)
+    profile = serializers.ImageField(read_only=True)
+    class Meta:
+        model = User
+        fields = ('id', 'name', 'profile', 'email', 'token', 'token_expires')
+
+class UserUpdateSerializer(serializers.ModelSerializer):
+    profile = serializers.ImageField(required=False)
+
+    def validate(self, data):
+        errors = {}
+        if 'name' not in data or not data['name']:
+            errors['name'] = ['name is required.']
+
+        if 'email' not in data or not data['email']:
+            errors['email'] = ['email is required.']
+
+        if bool(errors):
+            raise serializers.ValidationError(errors)
+
+        return data
 
     class Meta:
         model = User
-        fields = ('id', 'name', 'budget', 'profile', 'email', 'password')
-        
+        fields = ('id', 'name', 'profile', 'email', 'token', 'token_expires')
+
 class UserSignUpSerializer(serializers.ModelSerializer):
     email = serializers.CharField(required=True)
     password = serializers.CharField(write_only=True, required=True)
     token = serializers.CharField(read_only=True)
     token_expires = serializers.DateTimeField(read_only=True)
+    profile = serializers.ImageField(required=False)
 
     class Meta:
         model = User
@@ -42,12 +61,14 @@ class UserSignUpSerializer(serializers.ModelSerializer):
 class UserSignInSerializer(serializers.ModelSerializer):
     email = serializers.EmailField()
     password = serializers.CharField(write_only=True)
+    name = serializers.CharField(read_only=True)
     token = serializers.CharField(read_only=True)
     token_expires = serializers.DateTimeField(read_only=True)
+    profile = serializers.ImageField(read_only=True)
 
     class Meta:
         model = User
-        fields = ('id', 'profile', 'email', 'password', 'token', 'token_expires')
+        fields = ('id', 'name', 'profile', 'email', 'password', 'token', 'token_expires')
 
     # Override the create method
     def create(self, validated_data):

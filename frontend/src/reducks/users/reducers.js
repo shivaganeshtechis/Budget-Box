@@ -30,6 +30,12 @@ export const UserReducer = (state = initialState.user, action) => {
                     password: null
                 }
             }
+        case Actions.UPDATE_PROFILE:
+            return {
+                ...state,
+                ...action.payload.user,
+            }
+            
         default:
             return state;
     }
