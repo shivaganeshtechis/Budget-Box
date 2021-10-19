@@ -61,6 +61,7 @@ html, body, #root {
 
 .font-size-28 {
     font-size: 28px !important;
+    line-height: 1.6 !important;
 }
 
 .font-size-72 {
