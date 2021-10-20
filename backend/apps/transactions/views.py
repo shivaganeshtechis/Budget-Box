@@ -158,9 +158,9 @@ class ExpenseReport(CustomLoginRequiredMixin, generics.ListAPIView):
             type='expense', 
             date__gte=start_date,
             date__lte=end_date
-        ).extra(select_data).values('category_id').annotate(
+        ).values('category_id').annotate(
             total_amount=Sum('amount'), 
-            total_amount_percent=Cast(Sum('amount'), FloatField()) * 100 / total_expense).order_by('date')
+            total_amount_percent=Cast(Sum('amount'), FloatField()) * 100 / total_expense)
         
         for dic in transactions:
             category = Category.objects.filter(id=dic['category_id']).get()
