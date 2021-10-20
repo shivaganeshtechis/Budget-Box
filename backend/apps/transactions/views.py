@@ -142,30 +142,20 @@ class ExpenseReport(CustomLoginRequiredMixin, generics.ListAPIView):
         start_date = datetime(year, past_months, 1).date()
         end_date = datetime(year, today.month, monthrange(year, today.month)[-1]).date()
         
-        select_data = {"date": """strftime('%%m/%%Y', date)"""}
-
-        expenses = Transaction.objects.filter(
-            user_id=request.login_user.id, 
-            type='expense', 
-            date__gte=start_date,
-            date__lte=end_date
-        ).extra(select_data).values('date').annotate(total_amount=Sum('amount'))
-            
-        total_expense = sum(map(operator.itemgetter('total_amount'),expenses))
-
         transactions = Transaction.objects.filter(
             user_id=request.login_user.id, 
             type='expense', 
             date__gte=start_date,
             date__lte=end_date
-        ).values('category_id').annotate(
-            total_amount=Sum('amount'), 
-            total_amount_percent=Cast(Sum('amount'), FloatField()) * 100 / total_expense)
+        ).values('category_id').annotate(total_amount=Sum('amount'))
         
-        for dic in transactions:
-            category = Category.objects.filter(id=dic['category_id']).get()
-            dic['category_name'] = category.name
-            dic['category_color'] = category.color_code
+        total_expense = sum(map(operator.itemgetter('total_amount'),transactions))
+
+        for transaction in transactions:
+            category = Category.objects.filter(id=transaction['category_id']).get()
+            transaction['category_name'] = category.name
+            transaction['category_color'] = category.color_code
+            transaction['total_amount_percent'] = round(transaction['total_amount'] * 100 / total_expense, 2)
             
         return Response({
             'data': transactions, 
