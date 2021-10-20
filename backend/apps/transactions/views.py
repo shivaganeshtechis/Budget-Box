@@ -155,7 +155,7 @@ class ExpenseReport(CustomLoginRequiredMixin, generics.ListAPIView):
             category = Category.objects.filter(id=transaction['category_id']).get()
             transaction['category_name'] = category.name
             transaction['category_color'] = category.color_code
-            transaction['total_amount_percent'] = round(transaction['total_amount'] * 100 / total_expense, 2)
+            transaction['total_amount_percent'] = transaction['total_amount'] * 100 / total_expense
             
         return Response({
             'data': transactions, 
