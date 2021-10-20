@@ -4,6 +4,7 @@ import {
     deleteTransactionAction,
     errorTransactionAction,
     fetchExpenseReportAction,
+    fetchLast4MonthsReportAction,
     fetchReportTransactionsAction,
     fetchTransactionsAction,
     updateTransactionAction,
@@ -64,5 +65,12 @@ export const fetchExpenseReport = (params = {}) => {
     return async (dispatch) => {
         return api.getExpenseReport(params)
             .then(report => dispatch(fetchExpenseReportAction(report)));
+    }
+}
+
+export const fetchLast4MonthsReport = (params = {}) => {
+    return async (dispatch) => {
+        return api.getLast4MonthsReport(params)
+            .then(report => dispatch(fetchLast4MonthsReportAction(report)));
     }
 }

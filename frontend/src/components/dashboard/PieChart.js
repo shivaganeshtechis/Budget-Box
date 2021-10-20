@@ -10,10 +10,10 @@ export default function PieChart(props) {
     return (
         <div className="pieContainer">
             <div className="pieBackground">
-                <div>
+                {/* <div> */}
                     <div id="selected-category">
                         {selectedCategory}%
-                    </div>
+                    {/* </div> */}
                 </div>
                 {
                     props.data.data.map((item, index) => {
@@ -36,10 +36,10 @@ export default function PieChart(props) {
                                     onClick={() => setSelectedCategory(item.total_amount_percent.toFixed(1))}
                                     key={item.id}
                                 >
-                                    <div className="hold" style={{ transform: `rotate(${prevDeg - currentDeg}deg)` }} key={item.category_name}>
+                                    <div className="hold" style={{ transform: `rotate(${prevDeg - currentDeg}deg)` }} >
                                         <div className="pie" style={{ backgroundColor: `${item.category_color}`, transform: `rotate(${180}deg)` }}></div>
                                     </div>
-                                    <div className="hold" style={{ transform: `rotate(${(prevDeg - currentDeg) + 180}deg)` }} key={item.category_name}>
+                                    <div className="hold" style={{ transform: `rotate(${(prevDeg - currentDeg) + 180}deg)` }} >
                                         <div className="pie" style={{ backgroundColor: `${item.category_color}`, transform: `rotate(${currentDeg - 180}deg)` }}></div>
                                     </div>
                                 </div>
@@ -53,10 +53,21 @@ export default function PieChart(props) {
                 {
                     props.data.data.map((item, index) => {
                         return (
-                            <div
-                                className="chart-legend-item"
-                                data-color={item.category_color}
-                            >
+                            <div className="chart-legend-item" key={`legend-${index}`} onClick={() => setSelectedCategory(item.total_amount_percent.toFixed(1))} >
+                                <div
+                                    key={`legend-identifier-${index}`}
+                                    className="chart-legend-identifier"
+                                    style={{
+                                        width: '10px',
+                                        height: '10px',
+                                        borderRadius: '5px',
+                                        backgroundColor: `${item.category_color}`,
+                                        position: 'absolute',
+                                        left: '-20px',
+                                        top: '5px'
+                                    }}
+                                >
+                                </div>
                                 {item.category_name}
                             </div>
                         )

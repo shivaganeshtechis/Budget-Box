@@ -26,7 +26,7 @@ export default function ProfileHeader(props) {
 				<div className="custom-modal-header--container">
 					<div className="menu-container">
 						<div className="custom-modal-header--cancel">
-							<span onClick={() => setOpenModalMenu(false)} class="pic arrow-down"></span>
+							<span onClick={() => setOpenModalMenu(false)} className="pic arrow-down"></span>
 						</div>
 						<ul className="user-menu">
 							<div className="profile-highlight">

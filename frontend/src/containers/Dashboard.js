@@ -4,21 +4,42 @@ import { useDispatch, useSelector } from 'react-redux';
 
 import PieChart from '../components/dashboard/PieChart';
 import Breadcrumbs from '../components/default/SecondNavBar';
-import { fetchExpenseReport } from '../reducks/transactions/operations';
-import { getExpenseReport } from '../reducks/transactions/selectors';
+import { fetchExpenseReport, fetchLast4MonthsReport } from '../reducks/transactions/operations';
+import { getExpenseReport, getLast4MonthsReport } from '../reducks/transactions/selectors';
 
 export default function Report() {
 
 	const dispatch = useDispatch();
-    const selector = useSelector((state) => state);
-    const expenseReports = getExpenseReport(selector);
+	const selector = useSelector((state) => state);
+	const expenseReports = getExpenseReport(selector);
+	const last4MonthsReport = getLast4MonthsReport(selector);
 
-    useEffect(() => {
-        dispatch(fetchExpenseReport());
+	useEffect(() => {
+		dispatch(fetchExpenseReport());
+		dispatch(fetchLast4MonthsReport());
 		// eslint-disable-next-line
-    }, []);
+	}, []);
 
-    console.log("expenseReports",expenseReports);
+	const largestReportAmount = Math.max.apply(
+		Math,
+		[{ total_amount: 0 }].concat(...last4MonthsReport).map((obj) => {
+			return obj.total_amount;
+		})
+	);
+
+	const chartGapAmount = Math.ceil((largestReportAmount * 1.3) / 7 / 100) * 100;
+	const highestGraphAmount = chartGapAmount * 7;
+	const chartHeight = 600;
+
+	const formatTotalAmount = (amount) => {
+		if (amount >= 1000000) {
+			return (amount / 1000000).toFixed(1) + 'M';
+		}
+		if (amount >= 1000) {
+			return (amount / 1000).toFixed(1) + 'K';
+		}
+		return amount;
+	}
 
 	return (
 		<Page layout="default">
@@ -30,6 +51,8 @@ export default function Report() {
 					<div className="dashboard-left">
 						<div className="content container--chart">
 							<div className="inner-container--chart">
+								<div className="font-size-28 p-2">Income and Expenses</div>
+								<div className="pl-2">Last 4 Months Reports</div>
 								<div>
 									<span className="label-bar expense-amount">Expenditure</span>
 									<span className="label-bar income-amount">Income</span>
@@ -37,66 +60,39 @@ export default function Report() {
 								<div className="bottom-line"></div>
 								<table id="q-graph">
 									<tbody>
-										<tr className="qtr" id={`q${1}`} key={`graph-${1}`}>
-											<th scope="row">{"2021/10"}</th>
-											<td
-												className="tooltip expense-bar bar"
-												style={{ height: 200 }}
-											>
-												<span className="tooltiptext">$200</span>
-											</td>
-											<td
-												className="tooltip income-bar bar"
-												style={{ height: 150 }}
-											>
-												<span className="tooltiptext">$150</span>
-											</td>
-										</tr>
-										<tr className="qtr" id={`q${2}`} key={`graph-${2}`}>
-											<th scope="row">{"2021/10"}</th>
-											<td
-												className="tooltip expense-bar bar"
-												style={{ height: 200 }}
-											>
-												<span className="tooltiptext">$200</span>
-											</td>
-											<td
-												className="tooltip income-bar bar"
-												style={{ height: 150 }}
-											>
-												<span className="tooltiptext">$150</span>
-											</td>
-										</tr>
-										<tr className="qtr" id={`q${3}`} key={`graph-${3}`}>
-											<th scope="row">{"2021/10"}</th>
-											<td
-												className="tooltip expense-bar bar"
-												style={{ height: 200 }}
-											>
-												<span className="tooltiptext">$200</span>
-											</td>
-											<td
-												className="tooltip income-bar bar"
-												style={{ height: 150 }}
-											>
-												<span className="tooltiptext">$150</span>
-											</td>
-										</tr>
-										<tr className="qtr" id={`q${4}`} key={`graph-${4}`}>
-											<th scope="row">{"2021/10"}</th>
-											<td
-												className="tooltip expense-bar bar"
-												style={{ height: 200 }}
-											>
-												<span className="tooltiptext">$200</span>
-											</td>
-											<td
-												className="tooltip income-bar bar"
-												style={{ height: 150 }}
-											>
-												<span className="tooltiptext">$150</span>
-											</td>
-										</tr>
+										{last4MonthsReport.map((report, index) => {
+											let income = report.find((i) => {
+												return i.type === "income";
+											});
+											let expense = report.find((i) => {
+												return i.type === "expense";
+											});
+											return (
+												<tr className="qtr" id={`q${index + 1}`} key={`graph-${index}`}>
+													<th scope="row">{report[0].date}</th>
+													<td
+														className="tooltip expense-bar bar"
+														style={{
+															height:
+																((expense ? expense.total_amount : 0) * chartHeight) /
+																highestGraphAmount,
+														}}
+													>
+														<span className="tooltiptext">{`$${expense ? formatTotalAmount(expense.total_amount) : 0}`}</span>
+													</td>
+													<td
+														className="tooltip income-bar bar"
+														style={{
+															height:
+																((income ? income.total_amount : 0) * chartHeight) /
+																highestGraphAmount,
+														}}
+													>
+														<span className="tooltiptext">{`$${income ? formatTotalAmount(income.total_amount) : 0}`}</span>
+													</td>
+												</tr>
+											)
+										})}
 									</tbody>
 								</table>
 							</div>

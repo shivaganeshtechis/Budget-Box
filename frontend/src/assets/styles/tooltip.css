@@ -5,16 +5,14 @@
 }
   
 .tooltip .tooltiptext {
-    visibility: hidden;
     width: 50px;
     color: #59AAD0;
     text-align: center;
     border-radius: 6px;
     padding: 4px 0;
     position: absolute;
-    top: -35px;
-    left: -10px;
-    transform: rotate(330deg);
+    top: -25px;
+    left: -7px;
 }
 
 .tooltip:hover .tooltiptext {

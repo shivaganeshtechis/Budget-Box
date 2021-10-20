@@ -21,7 +21,7 @@ const Header = () => {
 				{token ? (
 					<button onClick={() => setOpenModalMenu(true)} className="sign-out-btn">
 						{user.name}
-						<span class="pic arrow-down"></span>
+						<span className="pic arrow-down"></span>
 					</button>
 				) : (
 					<Link to="/sign-in">Sign in</Link>

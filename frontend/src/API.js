@@ -122,4 +122,10 @@ export default class API {
 			requireToken: true
 		});
 	}
+
+	getLast4MonthsReport = () => {
+		return api.get('/transactions/reports/', {
+			requireToken: true
+		});
+	}
 }

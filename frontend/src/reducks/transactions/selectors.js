@@ -10,3 +10,8 @@ export const getExpenseReport = createSelector(
     [transactionsSelector],
     state => state.expenseReports
 );
+
+export const getLast4MonthsReport = createSelector(
+    [transactionsSelector],
+    state => state.last4MonthsReport
+);

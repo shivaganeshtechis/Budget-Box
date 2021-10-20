@@ -22,7 +22,7 @@ const initialState = {
             type: null,
             amount: null,
         },
-        reports: [],
+        last4MonthsReport: [],
         expenseReports: {
             data: [],
             total_expense: 0,

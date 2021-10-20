@@ -108,6 +108,13 @@ html, body, #root {
     padding: .5rem !important;
 }
 
+.p-2 {
+    padding: 1rem !important;
+}
+
+.pl-2 {
+    padding-left: 1rem !important;
+}
 input:focus
 {
   outline: none;
