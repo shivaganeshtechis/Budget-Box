@@ -1,4 +1,4 @@
-from django.db.models.fields import DecimalField, FloatField
+from django.db.models.fields import FloatField
 from rest_framework.response import Response
 from rest_framework.renderers import JSONRenderer
 from apps.users.mixins import CustomLoginRequiredMixin
@@ -11,6 +11,7 @@ from calendar import monthrange
 from django.db.models import Sum
 from django.db.models.functions import Cast
 from collections import defaultdict
+import operator
 
 class TransactionAdd(CustomLoginRequiredMixin, generics.CreateAPIView):
     queryset = Transaction.objects.all()
@@ -143,12 +144,14 @@ class ExpenseReport(CustomLoginRequiredMixin, generics.ListAPIView):
         
         select_data = {"date": """strftime('%%m/%%Y', date)"""}
 
-        total_expense = Transaction.objects.filter(
+        expenses = Transaction.objects.filter(
             user_id=request.login_user.id, 
             type='expense', 
             date__gte=start_date,
             date__lte=end_date
-        ).extra(select_data).values('date').annotate(total_amount=Sum('amount')).get()['total_amount']
+        ).extra(select_data).values('date').annotate(total_amount=Sum('amount'))
+            
+        total_expense = sum(map(operator.itemgetter('total_amount'),expenses))
 
         transactions = Transaction.objects.filter(
             user_id=request.login_user.id, 
