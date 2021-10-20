@@ -3,7 +3,7 @@ from rest_framework.response import Response
 
 from apps.users.mixins import CustomLoginRequiredMixin
 from .models import User
-from .serializers import UserSerializer, UserSignInSerializer, UserSignUpSerializer, UserUpdateSerializer
+from .serializers import UserSerializer, UserSignInSerializer, UserSignUpSerializer, UserUpdateBudgetSerializer, UserUpdateSerializer
 
 class UserSignUp(generics.CreateAPIView):
     queryset = User.objects.all()
@@ -30,6 +30,18 @@ class UpdateProfile(CustomLoginRequiredMixin, generics.UpdateAPIView):
     def put(self, request, *args, **kwargs):
 
         serializer = UserUpdateSerializer()
+        serializer.validate(request.data)
+
+        return self.update(request, *args, **kwargs)
+
+class UpdateBudget(CustomLoginRequiredMixin, generics.UpdateAPIView):
+    serializer_class = UserUpdateBudgetSerializer
+    queryset = User.objects.all()
+    lookup_field = 'id'
+
+    def put(self, request, *args, **kwargs):
+
+        serializer = UserUpdateBudgetSerializer()
         serializer.validate(request.data)
 
         return self.update(request, *args, **kwargs)

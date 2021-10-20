@@ -150,7 +150,6 @@ class ExpenseReport(CustomLoginRequiredMixin, generics.ListAPIView):
             date__lte=end_date
         ).extra(select_data).values('date').annotate(total_amount=Sum('amount')).get()['total_amount']
 
-        print("total_expense", total_expense)
         transactions = Transaction.objects.filter(
             user_id=request.login_user.id, 
             type='expense', 
@@ -164,6 +163,11 @@ class ExpenseReport(CustomLoginRequiredMixin, generics.ListAPIView):
             category = Category.objects.filter(id=dic['category_id']).get()
             dic['category_name'] = category.name
             dic['category_color'] = category.color_code
-
-        return Response(transactions)
+            
+        return Response({
+            'data': transactions, 
+            'total_expense': total_expense, 
+            'budget': request.login_user.budget,
+            'reminder': request.login_user.budget - total_expense,
+            })
 

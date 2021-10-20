@@ -3,10 +3,9 @@ import React, { useEffect, useState } from 'react';
 export default function PieChart(props) {
     let prevDeg = 0
     let [selectedCategory, setSelectedCategory] = useState(100);
-
     useEffect(() => {
-        setSelectedCategory(props.data[0] ? props.data[0].total_amount_percent.toFixed(1) : 100)
-    }, [props.data])
+        setSelectedCategory(props.data.data[0] ? props.data.data[0].total_amount_percent.toFixed(1) : 100)
+    }, [props.data.data])
 
     return (
         <div className="pieContainer">
@@ -17,7 +16,7 @@ export default function PieChart(props) {
                     </div>
                 </div>
                 {
-                    props.data.map((item, index) => {
+                    props.data.data.map((item, index) => {
                         let currentDeg = (360 * item.total_amount_percent) / 100;
                         prevDeg = prevDeg + currentDeg;
                         if (currentDeg < 180) {
@@ -52,7 +51,7 @@ export default function PieChart(props) {
             </div>
             <div className="chart-legend">
                 {
-                    props.data.map((item, index) => {
+                    props.data.data.map((item, index) => {
                         return (
                             <div
                                 className="chart-legend-item"

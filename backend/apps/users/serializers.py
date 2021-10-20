@@ -9,7 +9,7 @@ class UserSerializer(serializers.ModelSerializer):
     profile = serializers.ImageField(read_only=True)
     class Meta:
         model = User
-        fields = ('id', 'name', 'profile', 'email', 'token', 'token_expires')
+        fields = ('id', 'name', 'profile', 'budget', 'email', 'token', 'token_expires')
 
 class UserUpdateSerializer(serializers.ModelSerializer):
     profile = serializers.ImageField(required=False)
@@ -30,6 +30,21 @@ class UserUpdateSerializer(serializers.ModelSerializer):
     class Meta:
         model = User
         fields = ('id', 'name', 'profile', 'email', 'token', 'token_expires')
+
+class UserUpdateBudgetSerializer(serializers.ModelSerializer):
+    def validate(self, data):
+        errors = {}
+        if 'budget' not in data or not data['budget']:
+            errors['budget'] = ['budget is required.']
+
+        if bool(errors):
+            raise serializers.ValidationError(errors)
+
+        return data
+
+    class Meta:
+        model = User
+        fields = ('id', 'budget')
 
 class UserSignUpSerializer(serializers.ModelSerializer):
     email = serializers.CharField(required=True)
