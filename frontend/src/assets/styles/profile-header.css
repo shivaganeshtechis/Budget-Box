@@ -144,3 +144,16 @@
     border-right: 5px solid transparent;
     border-top: 5px solid #FFFFFF;
 }
+
+/* @media only screen and (max-width: 768px) {
+    .user-menu {
+        width: 256px;
+        padding: 10px 20px !important;
+        left: 27%;
+    }
+
+    .custom-modal-header--cancel {
+        right: -29%;
+    }
+} */
+

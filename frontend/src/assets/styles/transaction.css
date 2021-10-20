@@ -222,7 +222,7 @@
     height: 40px;
     background: #ffffffba;
     border-radius: 50%;
-    box-shadow: 5px 5px 10px -7px #25729b;
+    box-shadow: 5px 5px 10px -7px #000000;
     align-items: center;
     justify-content: center;
     cursor: pointer;
@@ -287,10 +287,48 @@
     margin: 0;
 }
 
-/*****************************
-* Chart
-******************************/
+.popup-form-container {
+    color: #fff;
+    display: flex;
+    flex-direction: column;
+    max-width: 320px;
+}
 
 /*****************************
 * Responsive
 ******************************/
+@media only screen and (max-width: 573px) {
+    .custom-modal--container {
+        max-width: 300px !important;
+    }
+    
+    .custom-modal--content {
+        width: 100%;
+    }
+
+    .popup-form-container {
+        display: flex;
+        flex-direction: column;
+        max-width: 220px;
+    }
+
+    .custom-input-modal {
+        height: 40px;
+        font-size: 18px;
+    }
+}
+
+@media only screen and (max-width: 425px) {
+    .budget-form {
+        flex-direction: column;
+        align-items: stretch;
+        padding: 0;
+    }
+
+    .custom-modal--cancel {
+        top: -50px;
+        right: -35px;
+        width: 30px;
+        height: 30px;
+    }
+}
