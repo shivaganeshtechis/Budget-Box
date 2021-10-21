@@ -51,7 +51,7 @@ export default function Report() {
 					<div className="dashboard-left">
 						<div className="content container--chart">
 							<div className="inner-container--chart">
-								<div className="font-size-28 p-2">Income and Expenses</div>
+								<div className="p-2">Income and Expenses</div>
 								<div className="pl-2">Last 4 Months Reports</div>
 								<div>
 									<span className="label-bar expense-amount">Expenditure</span>

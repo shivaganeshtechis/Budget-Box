@@ -5,33 +5,32 @@
 @font-face {
     font-family: 'Avenir';
     src: url('../fonts/avenir_ff/AvenirLTStd-Book.otf');
-  }
+}
 
-html, body, #root {
+body {
     margin: 0;
     padding: 0;
     min-height: 100vh;
     height: auto;
     font-family: 'Avenir', Helvetica, sans-serif !important;
-    display: flex;
-    flex-direction: column;
     background-color: #000;
     color: #f7fafa;
+    position: relative;
 }
 
 .main-wrapper {
     display: flex;
     flex-direction: column;
-    flex: 1;
+    /* flex: 1; */
 }
 
 .content-wrapper {
     display: flex;
-    flex: 1;
+    /* flex: 1; */
 }
 
 .content {
-    flex: 1;
+    width: 100%;
     padding: 0 48px 48px 48px;
 }
 
@@ -192,3 +191,9 @@ span.error-text {
     margin-top: 4px;
 }
 
+@media only screen and (max-width: 520px) {
+    .content {
+        padding: 0 16px 16px 16px;
+        width: calc(100% - 72px);
+    }
+}
