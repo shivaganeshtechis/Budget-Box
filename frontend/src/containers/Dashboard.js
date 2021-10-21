@@ -58,6 +58,8 @@ export default function Report() {
 									<span className="label-bar income-amount">Income</span>
 								</div>
 								<div className="bottom-line"></div>
+								<div id="prev-btn"></div>
+								<div id="next-btn"></div>
 								<table id="q-graph">
 									<tbody>
 										{last4MonthsReport.map((report, index) => {

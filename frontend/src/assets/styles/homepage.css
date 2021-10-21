@@ -56,7 +56,7 @@
     display: flex;
     justify-content: center;
     align-items: center;
-    font-size: 48px;
+    font-size: 32px;
 }
 
 .pieContainer {
@@ -182,6 +182,7 @@
     height: 600px;
     padding: 0;
     font-size: 11px;
+    overflow-x: hidden;
 }
 
 #q-graph caption {
@@ -305,6 +306,30 @@
     z-index: 2;
 }
 
+#prev-btn::after {
+    content: " \02C2";
+    position: absolute;
+    z-index: 2;
+    bottom: 300px;
+    left: 25px;
+    color: #ffffff99;
+    font-size: 32px;
+    cursor: pointer;
+    display: none;
+}
+
+#next-btn::after {
+    content: " \02C3";
+    position: absolute;
+    z-index: 2;
+    bottom: 300px;
+    right: 25px;
+    color: #ffffff99;
+    font-size: 32px;
+    cursor: pointer;
+    display: none;
+}
+
 /*****************************
 * Responsive
 ******************************/
@@ -333,5 +358,20 @@
 @media only screen and (max-width: 520px) {
     .label-bar.income-amount, .label-bar.expense-amount {
         left: 60%;
+    }
+    #q-graph #q1 {
+        left: calc(35% - 3000px);
+    }
+    #q-graph #q2 {
+        left: calc(35% - 2000px);
+    }
+    #q-graph #q3 {
+        left: calc(35% - 1000px);
+    }
+    #q-graph #q4 {
+        left: 35%;
+    }
+    #prev-btn::after {
+        display: block;
     }
 }
