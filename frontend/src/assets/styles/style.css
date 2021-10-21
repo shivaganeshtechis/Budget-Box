@@ -26,7 +26,7 @@ body {
 
 .content-wrapper {
     display: flex;
-    /* flex: 1; */
+    min-height: calc(100vh - 61px);
 }
 
 .content {
