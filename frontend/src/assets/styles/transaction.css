@@ -348,8 +348,8 @@
     }
 
     .custom-modal--cancel {
-        top: -50px;
-        right: -35px;
+        top: -40px;
+        right: -20px;
         width: 30px;
         height: 30px;
     }
@@ -377,5 +377,12 @@
 
     .second-nav-bar-title {
         font-size: 24px;
+    }
+
+    .custom-modal--cancel {
+        top: 5px;
+        right: 5px;
+        width: 25px;
+        height: 25px;
     }
 }
