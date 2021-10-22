@@ -325,10 +325,57 @@
         padding: 0;
     }
 
+    .table-container th {
+        font-size: 16px;
+    }
+
+    .table-container td {
+        font-size: 16px;
+    }
+
+    .add-budget {
+        width: 85px;
+        height: 35px;
+    }
+
+    .add-budget p {
+        font-size: 16px;
+        font-weight: 600;
+    }
+
+    .table-container {
+        padding: 5px 5px;
+    }
+
     .custom-modal--cancel {
         top: -50px;
         right: -35px;
         width: 30px;
         height: 30px;
+    }
+}
+
+@media only screen and (max-width: 370px) {
+    .table-container th {
+        font-size: 14px;
+    }
+
+    .table-container td {
+        font-size: 12px;
+    }
+
+    .add-budget {
+        width: 75px;
+        height: 30px;
+    }
+
+    .add-budget p {
+        font-size: 16px;
+        font-weight: 600;
+        margin: 4px 0px 0 10px;
+    }
+
+    .second-nav-bar-title {
+        font-size: 24px;
     }
 }

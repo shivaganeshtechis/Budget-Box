@@ -62,9 +62,9 @@
 }
 
 @media screen and (max-width: 380px) {
-    .header {
+    /* .header {
         padding: 1rem .5rem;
-    }
+    } */
 
     .header .username{
         margin: auto;

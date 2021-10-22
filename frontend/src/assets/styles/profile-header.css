@@ -62,6 +62,7 @@
     font-size: 14px;
     margin: 0;
     padding: 10px 4px;
+    width: 100%;
 }
 
 .user-menu .user-menu-link:hover {
