@@ -24,6 +24,7 @@
 .big-text {
     font-size: 70px;
     font-weight: bold;
+    width: 55%;
 }
 
 .small-text {
@@ -122,7 +123,7 @@ form input::placeholder {
     }
     
     .small-text {
-        font-size: 20px;
+        font-size: 24px;
     }
     
     .example-image {
@@ -136,11 +137,32 @@ form input::placeholder {
         max-width: 280px;
     }
 }
+@media only screen and (max-width: 969px ) {
+    .big-text {
+        width: 100%;
+    }
 
-@media only screen and (max-width: 768px ) {
+    .small-text {
+        font-size: 20px;
+    }
+}
+@media only screen and (max-width: 835px ) {
+    .big-text {
+        width: 100%;
+        text-align: center;
+    }
+
+    .small-text {
+        text-align: center;
+    }
 
     .example-image {
         display: none;
+        width: 100%;
+    }
+
+    .example-image-mobile {
+        width: 100%;
     }
 
     .example-image-mobile {
@@ -163,6 +185,21 @@ form input::placeholder {
    
 }
 
+
+@media only screen and (max-width: 520px) {
+    .big-text {
+        font-size: 28px;
+    }
+    
+    .small-text {
+        font-size: 16px;
+    }
+
+    .content {
+        width: 100%;
+    }
+}
+
 @media only screen and (max-width: 425px) {
     .landing-page {
         padding: 1rem;
@@ -178,5 +215,6 @@ form input::placeholder {
     
     .landing-page .small-text {
         font-size: 12px;
+        margin-bottom: 12px !important;
     }
 }

@@ -6,6 +6,7 @@ import {
 	signInError,
 	updateProfileAction,
 	updateProfileError,
+	updateBudgetAction,
 } from "./actions";
 
 const api = new API();
@@ -47,6 +48,19 @@ export const updateProfile = (data = {}, id) => {
 			})
 			.catch((error) => {
 				dispatch(updateProfileError(error.response.data));
+			});
+	};
+};
+
+export const updateBudget = (data = {}, id) => {
+	return async (dispatch) => {
+		return api
+			.updateBudget(data, id)
+			.then((response) => {
+				dispatch(updateBudgetAction(response));
+			})
+			.catch((error) => {
+				console.error(error)
 			});
 	};
 };

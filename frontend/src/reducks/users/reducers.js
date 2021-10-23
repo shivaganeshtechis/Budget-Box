@@ -35,6 +35,10 @@ export const UserReducer = (state = initialState.user, action) => {
                 ...state,
                 ...action.payload.user,
             }
+        case Actions.UPDATE_BUDGET:
+            return {
+                ...state,
+            }
             
         default:
             return state;

@@ -249,18 +249,22 @@
 
 #q-graph #q1 {
     left: 0;
+    transition: 0.5s;
 }
 
 #q-graph #q2 {
     left: 25%;
+    transition: 0.5s;
 }
 
 #q-graph #q3 {
     left: 50%;
+    transition: 0.5s;
 }
 
 #q-graph #q4 {
     left: 75%;
+    transition: 0.5s;
 }
 
 #q-graph tbody th {
@@ -330,6 +334,14 @@
     display: none;
 }
 
+.edit-budget {
+    cursor: pointer;
+}   
+
+.edit-budget:hover {
+    color: rgba(0, 217, 255, 0.795);
+}   
+
 /*****************************
 * Responsive
 ******************************/
@@ -372,6 +384,10 @@
         left: 35%;
     }
     #prev-btn::after {
+        display: block;
+    }
+
+    #next-btn::after {
         display: block;
     }
 }

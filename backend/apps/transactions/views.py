@@ -1,6 +1,4 @@
-from django.db.models.fields import FloatField
 from rest_framework.response import Response
-from rest_framework.renderers import JSONRenderer
 from apps.users.mixins import CustomLoginRequiredMixin
 from apps.transactions.serializers import ListTransactionSerializer, TransactionSerializer
 from apps.transactions.models import Transaction
@@ -9,9 +7,10 @@ from rest_framework import generics, status
 from datetime import datetime
 from calendar import monthrange
 from django.db.models import Sum
-from django.db.models.functions import Cast
 from collections import defaultdict
 import operator
+
+from config.helpers.error_response import error_response
 
 class TransactionAdd(CustomLoginRequiredMixin, generics.CreateAPIView):
     queryset = Transaction.objects.all()
@@ -25,11 +24,7 @@ class TransactionAdd(CustomLoginRequiredMixin, generics.CreateAPIView):
 
         category = Category.objects.get(id=category_id)
         if (category is None):
-            response = Response({'error': "Category not found."}, status=status.HTTP_404_NOT_FOUND)
-            response.accepted_renderer = JSONRenderer()
-            response.accepted_media_type = "application/json"
-            response.renderer_context = {}
-            return response
+            return error_response('Category not found.', status.HTTP_400_BAD_REQUEST)
 
         request.data._mutable = True
         request.data['user'] = request.login_user.id
@@ -51,23 +46,15 @@ class TransactionUpdate(CustomLoginRequiredMixin, generics.UpdateAPIView):
         id = self.kwargs['id']
 
         transaction = Transaction.objects.filter(user_id=request.login_user.id, id=id).first()
-
+        print("transaction",transaction)
         if transaction is None:
-            response = Response({'error': "Transaction not found."}, status=status.HTTP_400_BAD_REQUEST)
-            response.accepted_renderer = JSONRenderer()
-            response.accepted_media_type = "application/json"
-            response.renderer_context = {}
-            return response
+            return error_response('Transaction not found.', status.HTTP_400_BAD_REQUEST)
         
         category_id = int(request.data['category'])
 
         category = Category.objects.get(id=category_id)
         if (category is None):
-            response = Response({'error': "Category not found."}, status=status.HTTP_404_NOT_FOUND)
-            response.accepted_renderer = JSONRenderer()
-            response.accepted_media_type = "application/json"
-            response.renderer_context = {}
-            return response
+            return error_response('Category not found.', status.HTTP_400_BAD_REQUEST)
 
         request.data._mutable = True
         request.data['user'] = request.login_user.id
@@ -87,11 +74,7 @@ class TransactionDelete(CustomLoginRequiredMixin, generics.DestroyAPIView):
         transaction = Transaction.objects.filter(user_id=request.login_user.id, id=id).first()
 
         if transaction is None:
-            response = Response({'error': "Transaction not found."}, status=status.HTTP_400_BAD_REQUEST)
-            response.accepted_renderer = JSONRenderer()
-            response.accepted_media_type = "application/json"
-            response.renderer_context = {}
-            return response
+            return error_response('Transaction not found.', status.HTTP_400_BAD_REQUEST)
 
         self.destroy(request, *args, **kwargs)
         

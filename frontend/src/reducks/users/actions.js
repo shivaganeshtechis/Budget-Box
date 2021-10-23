@@ -38,6 +38,13 @@ export const updateProfileAction = (user) => {
     };
 };
 
+export const UPDATE_BUDGET = "UPDATE_BUDGET";
+export const updateBudgetAction = () => {
+    return {
+        type: UPDATE_BUDGET,
+    };
+};
+
 export const UPDATE_PROFILE_ERROR = "UPDATE_PROFILE_ERROR";
 export const updateProfileError = (errors) => {
     return {

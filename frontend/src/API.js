@@ -68,6 +68,12 @@ export default class API {
 		return api.put(`/users/update/${id}/`, formData, { requireToken: true });
 	};
 
+	updateBudget = async (updateBudgetBody, id) => {
+		const formData = new FormData();
+		formData.append('budget', updateBudgetBody);
+		return api.put(`/users/update/${id}/budget/`, formData, { requireToken: true });
+	};
+
 	// Transactions
 	getTransactions = (query) => {
 		const { page } = query;

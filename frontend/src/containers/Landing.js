@@ -11,7 +11,7 @@ export default function Landing() {
 			<Section slot="main">
 				<div className="landing-page">
 					<span className="big-text mb-2">
-						Sign up and manage <br /> your balance
+						Sign up and manage your balance
 					</span>
 					<span className="small-text mb-3">
 						Note down your expenditure and income, <br /> then check your balance everyday

@@ -1,7 +1,6 @@
 from .models import User
 from rest_framework import serializers
 from django.contrib.auth.hashers import make_password, check_password
-from django.core.exceptions import ValidationError
 from secrets import token_hex
 import datetime
 
