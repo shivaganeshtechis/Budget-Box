@@ -1,4 +1,4 @@
-import API from "../../API";
+import API, { LOGIN_USER_KEY } from "../../API";
 import {
 	signUpAction,
 	signUpError,
@@ -10,7 +10,6 @@ import {
 } from "./actions";
 
 const api = new API();
-const LOGIN_USER_KEY = "BUDGET_NOTEBOOK_LOGIN_USER_KEY";
 
 export const fetchUserFromLocalStorage = () => {
 	return async (dispatch) => {

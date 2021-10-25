@@ -2,6 +2,7 @@ import { useState } from "react";
 import { useDispatch } from "react-redux";
 import { useHistory } from "react-router";
 import { Link } from "react-router-dom";
+import { LOGIN_USER_KEY } from "../../API";
 import defaultProfile from '../../assets/images/account_circle.png'
 
 import { signOutAction } from "../../reducks/users/actions";
@@ -15,7 +16,7 @@ export default function ProfileHeader(props) {
 
 	const signOutHandler = () => {
 		dispatch(signOutAction());
-		localStorage.removeItem("BUDGET_NOTEBOOK_LOGIN_USER_KEY");
+		localStorage.removeItem(LOGIN_USER_KEY);
 		setOpenModalSignOut(false);
 		history.push("/");
 	};

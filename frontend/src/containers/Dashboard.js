@@ -226,7 +226,7 @@ export default function Report() {
 							<div className="dashboard-right-top-container">
 								<div className="dashboard-right-title">Monthly budget</div>
 								<div>
-									Calculation of last 4 months expense will <br /> be your Average budget.
+									Calculation of last 4 months expense will be your Average budget.
 								</div>
 								<div>
 									<span className="font-size-28 mt-2">Budget ${expenseReports.budget}</span>

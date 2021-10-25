@@ -1,6 +1,6 @@
 import axios from "axios";
 
-const LOGIN_USER_KEY = "BUDGET_NOTEBOOK_LOGIN_USER_KEY";
+export const LOGIN_USER_KEY = "BUDGET_NOTEBOOK_LOGIN_USER_KEY";
 
 var baseURL;
 if (process.env.REACT_APP_ENVIRONMENT && process.env.REACT_APP_ENVIRONMENT === "PRODUCTION") {
