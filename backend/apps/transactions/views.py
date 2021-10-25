@@ -105,15 +105,26 @@ class TransactionReport(CustomLoginRequiredMixin, generics.ListAPIView):
             date__lte=end_date
         ).extra(select_data).values("date", 'type').annotate(total_amount=Sum('amount')).order_by('date')
 
+        # Groupby date transaction within expense and income
         list_result = [entry for entry in transactions] 
         groups = defaultdict(list)
-        
         for obj in list_result:
             groups[obj['date']].append(obj)
 
-        new_list = groups.values()
         
-        return Response(new_list)
+        # Make sure that list result is consistently 4 arrays
+        new_list = list(groups.values())
+        result = [] 
+        for i in range(4):
+            if(i < len(new_list)):
+                result.append(new_list[i])
+            else:
+                result.insert(0, [
+                    { "date": "N/A", "type": "expense", "total_amount": 0 },
+                    { "date": "N/A", "type": "income", "total_amount": 0 }
+                ])
+
+        return Response(result)
 
 class ExpenseReport(CustomLoginRequiredMixin, generics.ListAPIView):
     serializer_class = ListTransactionSerializer

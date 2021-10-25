@@ -2,6 +2,7 @@ import { useState } from "react";
 import { useDispatch } from "react-redux";
 import { useHistory } from "react-router";
 import { Link } from "react-router-dom";
+import defaultProfile from '../../assets/images/account_circle.png'
 
 import { signOutAction } from "../../reducks/users/actions";
 
@@ -30,7 +31,7 @@ export default function ProfileHeader(props) {
 						</div>
 						<ul className="user-menu">
 							<div className="profile-highlight">
-								<img src={user.profile} alt="profile-img" width={36} height={36} />
+								<img src={user.profile ?? defaultProfile} alt="profile-img" width={36} height={36} />
 								<div className="details">
 									<div id="profile-name">{user.name}</div>
 									<div id="profile-footer">{user.email}</div>

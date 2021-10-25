@@ -59,7 +59,7 @@ export default function MyProfile() {
 							className={`upload-area`}
 							alt="Upload"
 						/>
-						<div className="upload-text">{`${isLoading ? 'Updating' : 'Edit'} Profile`}</div>
+						<div className="upload-text">{`${isLoading ? 'Updating Profile...' : 'Edit Profile'}`}</div>
 						<label className="profile-input-label" htmlFor="name">
 							Name
 						</label>
