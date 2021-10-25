@@ -76,7 +76,6 @@
 } 
   
 .pie {
-    transition: all 1s;
     position: absolute;
     width: 150px;
     height: 150px;
@@ -363,10 +362,6 @@
     }
 }
 
-@media only screen and (max-width: 1100px) {
-    
-}
-
 @media only screen and (max-width: 520px) {
     .label-bar.income-amount, .label-bar.expense-amount {
         left: 60%;
@@ -391,3 +386,37 @@
         display: block;
     }
 }
+
+@media only screen and (max-width: 520px) {
+    .pieContainer {
+        flex-direction: column;
+    }
+
+
+    .pieBackground {
+        width: 100px;
+        height: 100px;
+    } 
+    
+    .pie {
+        width: 100px;
+        height: 100px;
+        clip: rect(0px, 50px, 100px, 0px);
+    }
+    
+    .hold {
+        width: 100px;
+        height: 100px;
+        clip: rect(0px, 100px, 100px, 50px);
+    }
+
+    #selected-category {
+        top: 10px;
+        left: 10px;
+        width: 80px;
+        height: 80px;
+        font-size: 28px;
+    }
+}
+
+
