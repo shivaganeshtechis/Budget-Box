@@ -61,6 +61,7 @@ export default function Transaction() {
 		setValues({ type: "", name: "", category: "", date: new Date().toLocaleDateString("en-CA"), amount: 0 });
 		dispatch(resetErrorTransactionAction());
 		setOpenModal(true);
+		setIsUpdate(false);
 	};
 
 	const closeAddReportModalHandler = () => {
