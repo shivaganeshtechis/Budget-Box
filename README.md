@@ -12,7 +12,7 @@ Check out [API LIVE DEMO]() here!!
 ## How to Install
 1. Git Clone
 ```
-git clone git@github.com:Tech-i-s/techis-wd-sample-cafe-menu.git
+git clone https://github.com/Tech-i-s/techis-wd-sample-budget-box.git
 ```
 2. Backend setting
 ```
