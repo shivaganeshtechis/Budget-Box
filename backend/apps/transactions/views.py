@@ -1,3 +1,5 @@
+from django.db.models.expressions import Value
+from django.db.models.fields import CharField
 from rest_framework.response import Response
 from apps.users.mixins import CustomLoginRequiredMixin
 from apps.transactions.serializers import ListTransactionSerializer, TransactionSerializer
@@ -9,7 +11,7 @@ from calendar import monthrange
 from django.db.models import Sum
 from collections import defaultdict
 import operator
-
+from django.db.models.functions import Concat
 from config.helpers.error_response import error_response
 
 class TransactionAdd(CustomLoginRequiredMixin, generics.CreateAPIView):
@@ -17,7 +19,6 @@ class TransactionAdd(CustomLoginRequiredMixin, generics.CreateAPIView):
     serializer_class = TransactionSerializer
 
     def post(self, request, *args, **kwargs):
-
         serializer = TransactionSerializer()
         serializer.validate(request.data)
         category_id = int(request.data['category'])
@@ -97,20 +98,20 @@ class TransactionReport(CustomLoginRequiredMixin, generics.ListAPIView):
         start_date = datetime(year, past_months, 1).date()
         end_date = datetime(year, today.month, monthrange(year, today.month)[-1]).date()
         
-        select_data = {"date": """strftime('%%m/%%Y', date)"""}
-
         transactions = Transaction.objects.filter(
             user_id = request.login_user.id, 
             date__gte=start_date,
             date__lte=end_date
-        ).extra(select_data).values("date", 'type').annotate(total_amount=Sum('amount')).order_by('date')
+        ).values("date__month", "date__year", 'type').annotate(
+            total_amount=Sum('amount'), 
+            date=Concat('date__month', Value('/'), 'date__year', 
+            output_field=CharField())).order_by('date')
 
         # Groupby date transaction within expense and income
         list_result = [entry for entry in transactions] 
         groups = defaultdict(list)
         for obj in list_result:
             groups[obj['date']].append(obj)
-
         
         # Make sure that list result is consistently 4 arrays
         new_list = list(groups.values())
@@ -157,4 +158,3 @@ class ExpenseReport(CustomLoginRequiredMixin, generics.ListAPIView):
             'budget': request.login_user.budget,
             'reminder': request.login_user.budget - total_expense,
             })
-
