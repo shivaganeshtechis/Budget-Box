@@ -95,6 +95,17 @@ WSGI_APPLICATION = 'config.wsgi.application'
 # }
 django_heroku.settings(locals())
 
+DATABASES = {
+    'default': {
+        'ENGINE': 'django.db.backends.postgresql',
+        'NAME': 'dbiq0ksdf0h09t',
+        'USER': 'eqiffinqymfkpk',
+        'PORT': 5432,
+        'HOST': 'ec2-34-193-46-89.compute-1.amazonaws.com',
+        'PASSWORD': '535e6251820c4bdb1383cc662091b1934d0f9203fb436e8cd4caae896c3b52e0',
+    }
+}
+
 # Password validation
 # https://docs.djangoproject.com/en/3.2/ref/settings/#auth-password-validators
 
