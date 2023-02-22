@@ -6,6 +6,7 @@ export default function PieChart(props) {
     useEffect(() => {
         setSelectedCategory(props.data.data[0] ? props.data.data[0].total_amount_percent.toFixed(1) : 100)
     }, [props.data.data])
+    console.log("",props.data);
 
     return (
         <div className="pieContainer">

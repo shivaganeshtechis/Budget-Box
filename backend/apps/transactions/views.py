@@ -13,6 +13,8 @@ from collections import defaultdict
 import operator
 from django.db.models.functions import Concat
 from config.helpers.error_response import error_response
+from datetime import timedelta
+from dateutil.relativedelta import relativedelta
 
 class TransactionAdd(CustomLoginRequiredMixin, generics.CreateAPIView):
     queryset = Transaction.objects.all()
@@ -92,11 +94,13 @@ class TransactionReport(CustomLoginRequiredMixin, generics.ListAPIView):
     serializer_class = ListTransactionSerializer
 
     def get(self, request, *args, **kwargs):
-        today = datetime.today()
-        past_months = today.month - 3
-        year = today.year
-        start_date = datetime(year, past_months, 1).date()
-        end_date = datetime(year, today.month, monthrange(year, today.month)[-1]).date()
+        current_date = datetime.today()
+        current_year = current_date.year
+
+        past_date = (current_date - relativedelta(months=3)).date()
+
+        start_date = datetime(past_date.year, past_date.month, 1).date()
+        end_date = datetime(current_year, current_date.month, monthrange(current_year, current_date.month)[-1]).date()
         
         transactions = Transaction.objects.filter(
             user_id = request.login_user.id, 
@@ -131,11 +135,13 @@ class ExpenseReport(CustomLoginRequiredMixin, generics.ListAPIView):
     serializer_class = ListTransactionSerializer
 
     def get(self, request, *args, **kwargs):
-        today = datetime.today()
-        past_months = today.month - 3
-        year = today.year
-        start_date = datetime(year, past_months, 1).date()
-        end_date = datetime(year, today.month, monthrange(year, today.month)[-1]).date()
+        current_date = datetime.today()
+        current_year = current_date.year
+
+        past_date = (current_date - relativedelta(months=3)).date()
+
+        start_date = datetime(past_date.year, past_date.month, 1).date()
+        end_date = datetime(current_year, current_date.month, monthrange(current_year, current_date.month)[-1]).date()
         
         transactions = Transaction.objects.filter(
             user_id=request.login_user.id, 
